@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <v-app>
+      <router-view />
+    </v-app>
   </div>
 </template>
 
 <script>
+import navbar from "./components/navbar.vue";
 export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
-    }
+  components: {
+    navbar
   }
-}
+};
 </script>
 
 <style scoped>
