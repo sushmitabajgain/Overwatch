@@ -7385,6 +7385,11 @@ uuid@^3.3.2, uuid@^3.4.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
+v-toaster@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/v-toaster/-/v-toaster-1.0.3.tgz#2c768cea82a5a9e5324f3e0b02703230ce98146f"
+  integrity sha512-B+yhvuUDiYykh1g4jgAKTRmnrJa4vrc+O1+/A57HSl4rA3R7OX0+8GGz2kr3eZ9YKkpaRlew9zWSjtksVa0+Bg==
+
 v8-compile-cache@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.1.1.tgz#54bc3cdd43317bca91e35dcaf305b1a7237de745"
@@ -7421,6 +7426,11 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+vue-cookies@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/vue-cookies/-/vue-cookies-1.7.3.tgz#de8da757ecb01cd4c5731fcff7f3f86781acc5e8"
+  integrity sha512-94AhF6LDHuZkrkWe1miDFkMALD6r9sKYZ+kT0TV9e6L97HST+Ozj+cKaWf97+fWSadJu50a2w/Cgo0iKQhNtKg==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
@@ -7473,6 +7483,11 @@ vuetify@^2.3.9:
   version "2.3.10"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.3.10.tgz#c8cbc77ee1224b5a132f501a3762dee6d8c95a06"
   integrity sha512-KzL/MhZ7ajubm9kwbdCoA/cRV50RX+a5Hcqiwt7Am1Fni2crDtl2no05UNwKroTfscrYYf07gq3WIFSurPsnCA==
+
+vuex@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.5.1.tgz#f1b8dcea649bc25254cf4f4358081dbf5da18b3d"
+  integrity sha512-w7oJzmHQs0FM9LXodfskhw9wgKBiaB+totOdb8sNzbTB2KDCEEwEs29NzBZFh/lmEK1t5tDmM1vtsO7ubG1DFw==
 
 watchpack-chokidar2@^2.0.0:
   version "2.0.0"

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 import navbar from './components/navbar'
 
 Vue.use(VueRouter)
@@ -20,6 +21,11 @@ export default new VueRouter({
       path: '/SignIn',
       name:'SignIn',
       component: SignIn
+    },
+    { 
+      path: '/SignUp',
+      name:'SignUp',
+      component: SignUp
     },
   ]
 })
