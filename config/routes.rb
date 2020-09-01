@@ -4,8 +4,8 @@ Rails.application.routes.draw do
       resources :users
     end
   end
-
-  devise_for :users, controllers: { sessions: 'users/sessions'}
+  devise_for :users, skip: :sessions, controllers: {
+   confirmations: 'users/confirmations'}
 
   devise_scope :user do
     post 'login', to: 'users/sessions#create'
