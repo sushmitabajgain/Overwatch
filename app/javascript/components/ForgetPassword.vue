@@ -35,7 +35,7 @@
                             required
                           />
                           <div class="text-center mt-3">
-                            <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign in </v-btn>
+                            <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Send </v-btn>
                           </div>
                         </v-form>
                       </v-card-text>

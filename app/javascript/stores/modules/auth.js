@@ -48,6 +48,24 @@ const auth ={
             })
           }
         })
+        .catch(error => {
+          reject(error.response.data.error)
+        })
+      })
+    },
+
+    userPassword: (commit, userData) => {
+      return new Promise((resolve,reject)=>{
+        eventService.auth.postResetPassword(userData)
+        .then(res => {
+          if(res.status == 201){
+            Vue.dialog.alert('Confirmation Email is sent. Please verify!')
+            router.push('/SignIn')                      
+          }
+        })
+        .catch(error => {
+          reject(error.response.data.error)
+        })
       })
     },
   }

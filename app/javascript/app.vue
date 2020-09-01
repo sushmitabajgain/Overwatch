@@ -17,9 +17,10 @@ export default {
 };
 </script>
 
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+<style lang="scss">
+  @import 'v-toaster/dist/v-toaster.css';
+  .v-toaster {
+    right: 50%;
+    left: 50%;
+  }
 </style>

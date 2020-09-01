@@ -89,7 +89,6 @@ import slider from './slider'
       return {
         email: '',
         password: '',
-        submitted: false,
         emailRules: [
           v => !!v || 'E-mail is required',
           v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
@@ -106,7 +105,6 @@ import slider from './slider'
       },
         OnSubmit: function() {
           // Form completion validation
-          this.submitted = true;
               const formData = {
                   email: this.email,
                   password: this.password,
