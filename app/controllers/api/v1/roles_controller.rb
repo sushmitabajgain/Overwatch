@@ -2,7 +2,6 @@ module Api
   module V1
     class RolesController < ApplicationController
       skip_before_action :verify_authenticity_token
-      before_action :authorize_request
       before_action :set_role, only: [:show, :edit, :update, :destroy]
       
       # GET /roles

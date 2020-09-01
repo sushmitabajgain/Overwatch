@@ -51,6 +51,15 @@
                               :rules="passwordRules"
                               required>
                             </v-text-field>
+                            <v-select
+                              v-model="select"
+                              :items="options" item-value="id" item-text="name"
+                              :rules="[v => !!v || 'Role is required']"
+                              label="Choose role"
+                              prepend-icon="admin_panel_settings"
+                              required
+                            >
+                            </v-select>
                             <div class="text-center mt-3">
                               <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign up </v-btn>
                             </div>
@@ -90,14 +99,12 @@
 </template>
 
 <script>
-import slider from './slider'
+import eventService from "../eventService"
 export default {
-  components:{
-    slider
-  },
   data(){
     return{
       username: '',
+      select: '',
       nameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 10) || 'Name must be less than 10 characters',
@@ -111,8 +118,17 @@ export default {
       passwordRules:[
         v => !!v || 'Password is required',
         v => v.length >= 6 || 'Min 6 characters',
-      ]
+      ],
+      options: [],
     }
+  },
+  created(){
+    eventService.role.getRoles()
+    .then(res => {
+      if(res.status == 200){
+        this.options = res.data
+      }
+    })
   },
   methods:{
     validate () {
@@ -123,6 +139,7 @@ export default {
         username: this.username,
         email: this.email,
         password: this.password,
+        role_id: this.select
       }, {root:true})
       .then(response => {
           this.signupSuccessful(response)
