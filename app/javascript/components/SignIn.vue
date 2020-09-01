@@ -56,7 +56,8 @@
                           Hello users!
                         </h1>
                         <h5 class="text-center">
-                          Enter your sign in credentials to view projects details.
+                          New here?
+                          Join us by signing up.
                         </h5>
                       </v-card-text>
                       <div class="text-center">
