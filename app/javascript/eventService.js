@@ -47,5 +47,23 @@ export default {
       const id = (VueCookies.get('auth').user_id)
       return apiFeature.patch('/users/'+id, userData)
     },
-  }
+  },
+  
+  role: {
+    getRoles(){
+      return apiFeature.get('/roles')
+    },
+
+    getRoleId(role_id){
+      return apiFeature.get('/roles/'+role_id)
+    },
+
+    postRoles(role){
+        return apiFeature.post('/roles', role)
+    },
+
+    deleteRole(role_id){
+      return apiFeature.delete('/roles/'+role_id)
+    }
+  },
 }
