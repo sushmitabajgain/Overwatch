@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="deep-purple accent-4"
-                      dense
+    <v-app-bar class="pink accent-3"
                       dark
                       app
       >
@@ -9,10 +8,10 @@
         <v-spacer></v-spacer>
       <div v-if="!isAuth">
         <router-link to="/SignIn">
-          <v-btn rounded right class="ma-2" color="warning">Sign in</v-btn>
+          <v-btn rounded right class="ma-2" outlined="" dark>Sign in</v-btn>
         </router-link>
         <router-link to="/SignUp">
-          <v-btn rounded right class="ma-2" color="warning">Sign up</v-btn>
+          <v-btn rounded right class="ma-2" outlined="" dark>Sign up</v-btn>
         </router-link>
       </div>
      <v-menu v-else>
