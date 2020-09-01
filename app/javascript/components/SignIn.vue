@@ -43,7 +43,11 @@
                             <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign in </v-btn>
                           </div>
                         </v-form>
-                        <h3 class="text-center mt-3"> Forget your password? </h3>
+                        <router-link to="/Forgetpassword" class="links">
+                          <h3 class="text-center pink--text text--accent-3 mt-3">
+                            Forget your password?
+                          </h3>
+                        </router-link>
                       </v-card-text>
                     </v-col>
                     <v-col cols="12" md="4" class="pink accent-3">
@@ -114,3 +118,8 @@ import slider from './slider'
     }
   }
 </script>
+<style lang="scss" scoped>
+.links{
+  color: #f50057 !important;
+}
+</style>
