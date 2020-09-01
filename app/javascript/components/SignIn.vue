@@ -18,7 +18,7 @@
                           Sign in
                         </h1>
                         <div class="mt-4"></div>
-                        <v-form @submit.prevent="OnSubmit">
+                        <v-form @submit.prevent="OnSubmit" ref="form">
                           <v-text-field 
                             name="Email" 
                             label="Email"
@@ -26,6 +26,8 @@
                             type="text"
                             color="pink accent-3" 
                             v-model="email"
+                            :rules="emailRules"
+                            required
                           />
                           <v-text-field name="Password"
                             id="password"
@@ -34,9 +36,11 @@
                             color="pink accent-3"
                             prepend-icon="lock"
                             v-model="password"
+                            :rules="passwordRules"
+                            required
                           />
                           <div class="text-center mt-3">
-                            <v-btn rounded color="pink accent-3" dark type="submit"> Sign in </v-btn>
+                            <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign in </v-btn>
                           </div>
                         </v-form>
                         <h3 class="text-center mt-3"> Forget your password? </h3>
@@ -80,10 +84,21 @@ import slider from './slider'
       return {
         email: '',
         password: '',
-        submitted: false
+        submitted: false,
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        ],
+        passwordRules:[
+          v => !!v || 'Password is required',
+          v => v.length >= 6 || 'Min 6 characters',
+        ]
       }
     },
     methods: {
+      validate () {
+        this.$refs.form.validate()
+      },
         OnSubmit: function() {
           // Form completion validation
           this.submitted = true;

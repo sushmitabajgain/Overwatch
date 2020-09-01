@@ -22,20 +22,24 @@
                           Please enter your sign up details.
                         </h3>
                         <div class="mt-4"></div>
-                          <v-form @submit.prevent="OnSubmit">
+                          <v-form @submit.prevent="OnSubmit" ref="form" >
                             <v-text-field 
                               name="Username" 
                               label="Username"
                               color="pink accent-3"
                               prepend-icon="account_circle"
-                              v-model="username">
+                              v-model="username"
+                              :rules="nameRules"
+                              required>
                             </v-text-field>
                             <v-text-field 
                               name="Email" 
                               label="Email"
                               color="pink accent-3"
                               prepend-icon="email"
-                              v-model="email">
+                              v-model="email"
+                              :rules="emailRules"
+                              required>
                             </v-text-field>
                             <v-text-field 
                               name="Password" 
@@ -43,10 +47,12 @@
                               type="password"
                               prepend-icon="lock"
                               color="pink accent-3" 
-                              v-model="password">
+                              v-model="password"
+                              :rules="passwordRules"
+                              required>
                             </v-text-field>
                             <div class="text-center mt-3">
-                              <v-btn rounded color="pink accent-3" dark type="submit"> Sign up </v-btn>
+                              <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign up </v-btn>
                             </div>
                           </v-form>
                         <h3 class="text-center mt-3"> Forget your password? </h3>
@@ -62,9 +68,9 @@
                         </h5>
                       </v-card-text>
                       <div class="text-center">
-                        <router-link to="/SignUp">
+                        <router-link to="/SignIn">
                           <v-btn rounded outlined="" dark @click="step++">
-                            Sign up
+                            Sign In
                           </v-btn>
                         </router-link>
                       </div>
@@ -88,11 +94,26 @@ export default {
   data(){
     return{
       username: '',
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      ],
       email: '',
-      password: ''
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+      password: '',
+      passwordRules:[
+        v => !!v || 'Password is required',
+        v => v.length >= 6 || 'Min 6 characters',
+      ]
     }
   },
   methods:{
+    validate () {
+      this.$refs.form.validate()
+    },
     OnSubmit: function(){
       this.$store.dispatch('user/signUp',{
         username: this.username,
