@@ -31,7 +31,7 @@ const user = {
                     if(res.status == 201){    
                       {
                           router.push('/SignIn')      
-                          Vue.toaster.info('Please login!')
+                          Vue.toaster.info('Confirmation Email is sent. Please verify!')
                       }
                     }
                     else{

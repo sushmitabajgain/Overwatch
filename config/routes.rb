@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :users, skip: :sessions, controllers: {
+  confirmations: 'users/confirmations'}
+
   devise_for :users, controllers: { sessions: 'users/sessions'}
 
   devise_scope :user do

@@ -38,5 +38,14 @@ export default {
     getAllUser(){
       return apiFeature.get('/users')
     },
+    
+    postResetPassword(userData) {
+      return apiBase.post('/users/password',userData)
+    },
+
+    changePassword(userData){
+      const id = (VueCookies.get('auth').user_id)
+      return apiFeature.patch('/users/'+id, userData)
+    },
   }
 }

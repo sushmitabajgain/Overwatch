@@ -17,6 +17,8 @@ import Vuex from 'vuex';
 import VueCookies from 'vue-cookies'
 import axios from 'axios'
 import Toaster from 'v-toaster'
+import VuejsDialog from 'vuejs-dialog';
+import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 
 axios.defaults.baseURL = 'http://localhost:3000'
 Vue.config.productionTip = false
@@ -24,6 +26,7 @@ Vue.config.productionTip = false
 Vue.use(VueCookies)
 Vue.use(Vuex)
 Vue.use(Vuetify)
+Vue.use(VuejsDialog)
 Vue.use(Toaster, {timeout: 5000})
 
 let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
