@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="125px" height="126px" viewBox="0 0 125 126" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>image upload</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1.5,0 L123.5,0 C124.328427,-1.52179594e-16 125,0.671572875 125,1.5 L125,124 C125,124.828427 124.328427,125.5 123.5,125.5 L1.5,125.5 C0.671572875,125.5 1.01453063e-16,124.828427 0,124 L0,1.5 C-1.01453063e-16,0.671572875 0.671572875,1.52179594e-16 1.5,0 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="125" height="125.5" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="signup-lawyer-user-screen01" transform="translate(-754.000000, -367.000000)">
+            <g id="form" transform="translate(754.000000, 344.000000)">
+                <g id="image-upload" transform="translate(0.000000, 23.000000)">
+                    <use id="Rectangle-4" stroke="#CBCDD3" mask="url(#mask-2)" fill="#FFFFFF" stroke-dasharray="2.5,1.5" xlink:href="#path-1"></use>
+                    <text id="Drag-files-to-upload" font-family="Raleway-Medium, Raleway" font-size="10" font-weight="500" line-spacing="10.5" fill="#2D2D2D">
+                        <tspan x="14.5" y="76.5"> Add profile image </tspan>
+                    </text>
+                    <g id="upload" transform="translate(54.000000, 46.500000)">
+                        <rect id="Rectangle" stroke="#76BD29" stroke-width="0.5" fill="#FFFFFF" x="0.25" y="0.25" width="15.5" height="17" rx="2.5"></rect>
+                        <path d="M9.73046904,7.3359375 C9.65234365,7.41406289 9.57421943,7.41406289 9.49609404,7.3359375 L8.05078154,6.02734375 L8.05078154,11.59375 C8.05078154,11.6979172 7.99869873,11.75 7.89453154,11.75 C7.79036436,11.75 7.73828154,11.6979172 7.73828154,11.59375 L7.73828154,6.02734375 L6.29296904,7.3359375 C6.21484365,7.41406289 6.13671943,7.41406289 6.05859404,7.3359375 C5.98046865,7.25781211 5.98046865,7.17968789 6.05859404,7.1015625 C7.19141221,6.07291152 7.76432314,5.5520834 7.77734404,5.5390625 C7.80338584,5.5130207 7.84244795,5.5 7.89453154,5.5 C7.94661514,5.5 7.98567725,5.5130207 8.01171904,5.5390625 L9.73046904,7.1015625 C9.75651084,7.1276043 9.76953154,7.16666641 9.76953154,7.21875 C9.76953154,7.27083359 9.75651084,7.3098957 9.73046904,7.3359375 Z" id="ion-ios-arrow-thin-up---Ionicons" fill="#76BD29"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
