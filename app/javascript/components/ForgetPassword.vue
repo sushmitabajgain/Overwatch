@@ -73,7 +73,6 @@
         email: this.email }}, {root:true})
         .catch(error =>{
         this.$toaster.error("Sorry, Something went wrong. Try Again Later!")
-        this.loading = false
         })
       }
     }

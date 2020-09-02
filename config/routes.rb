@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, skip: :sessions, controllers: {
+  devise_for :users, skip: :sessions, controllers: {passwords: 'users/passwords',
   confirmations: 'users/confirmations'}
 
   devise_for :users, controllers: { sessions: 'users/sessions'}

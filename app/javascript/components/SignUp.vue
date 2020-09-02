@@ -32,6 +32,16 @@
                                 </span>
                             </div>
                             </v-row>
+                            <v-select
+                              v-model="select"
+                              :items="options" item-value="id" item-text="name"
+                              :rules="[v => !!v || 'Role is required']"
+                              label="Choose role"
+                              color="pink accent-3"
+                              prepend-icon="admin_panel_settings"
+                              required
+                            >
+                            </v-select>
                             <v-text-field 
                               name="Username" 
                               label="Username"
@@ -60,15 +70,6 @@
                               :rules="passwordRules"
                               required>
                             </v-text-field>
-                            <v-select
-                              v-model="select"
-                              :items="options" item-value="id" item-text="name"
-                              :rules="[v => !!v || 'Role is required']"
-                              label="Choose role"
-                              prepend-icon="admin_panel_settings"
-                              required
-                            >
-                            </v-select>
                             <div class="text-center mt-3">
                               <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign up </v-btn>
                             </div>
