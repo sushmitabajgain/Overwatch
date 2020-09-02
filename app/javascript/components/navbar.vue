@@ -3,7 +3,7 @@
                     dark
                     app
     >
-      <v-toolbar-title>Welcome</v-toolbar-title>
+      <a href="#" class="home" @click="home()"><v-toolbar-title>Home</v-toolbar-title></a>
       <v-spacer></v-spacer>
     <div v-if="!isAuth">
       <router-link to="/SignIn">
@@ -68,6 +68,9 @@ export default {
     logout(){
       const logoutStatus = this.$store.commit('auth/clearToken')
     },
+    home(){
+      this.$router.push('/')
+    },
   }
 }
 </script>
@@ -77,5 +80,8 @@ export default {
 }
 .links{
   color: #f50057 !important;
+}
+.home{
+  color: white;
 }
 </style>
