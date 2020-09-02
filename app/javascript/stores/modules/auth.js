@@ -58,8 +58,8 @@ const auth ={
       return new Promise((resolve,reject)=>{
         eventService.auth.postResetPassword(userData)
         .then(res => {
-          if(res.status == 201){
-            Vue.dialog.alert('Confirmation Email is sent. Please verify!')
+          if(res.status == 200){
+            Vue.toaster.info('You will receive an email with instructions on how to reset your password in a few minutes')
             router.push('/SignIn')                      
           }
         })
