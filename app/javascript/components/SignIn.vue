@@ -104,15 +104,14 @@ import slider from './slider'
         this.$refs.form.validate()
       },
         OnSubmit: function() {
-          // Form completion validation
-              const formData = {
-                  email: this.email,
-                  password: this.password,
-              }
-              this.$store.dispatch('auth/setToken',formData)
-              .catch((error)  => {
-                  this.$toaster.error(error)
-              })
+          const formData = {
+            email: this.email,
+            password: this.password,
+          }
+          this.$store.dispatch('auth/setToken',formData)
+          .catch(error  => {
+            this.$toaster.error(error)
+          })
         }
     }
   }
