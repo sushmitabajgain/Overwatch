@@ -1,39 +1,43 @@
 <template>
-  <v-app>
-    <v-app-bar class="pink accent-3"
-                      dark
-                      app
+  <v-app-bar class="pink accent-3"
+                    dark
+                    app
+    >
+      <v-toolbar-title>Welcome</v-toolbar-title>
+      <v-spacer></v-spacer>
+    <div v-if="!isAuth">
+      <router-link to="/SignIn">
+        <v-btn rounded right class="ma-2" outlined="" dark>Sign in</v-btn>
+      </router-link>
+      <router-link to="/SignUp">
+        <v-btn rounded right class="ma-2" outlined="" dark>Sign up</v-btn>
+      </router-link>
+    </div>
+    <v-menu v-else>
+    <template v-slot:activator="{ on, attrs }">
+      <h3
+        color="primary"
+        dark
+        v-bind="attrs"
+        v-on="on"
       >
-        <v-toolbar-title>Welcome</v-toolbar-title>
-        <v-spacer></v-spacer>
-      <div v-if="!isAuth">
-        <router-link to="/SignIn">
-          <v-btn rounded right class="ma-2" outlined="" dark>Sign in</v-btn>
-        </router-link>
-        <router-link to="/SignUp">
-          <v-btn rounded right class="ma-2" outlined="" dark>Sign up</v-btn>
-        </router-link>
-      </div>
-     <v-menu v-else>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Hi! {{username}}
-        </v-btn>
-      </template>
+      <v-avatar size="36">
+			  <img :src="image" alt="" class="rounded-circle profile_image">
+		  </v-avatar>
+        Hi! {{username}}
+      </h3>
+    </template>
 
-      <v-list>
-        <v-list-item>
-          <a href="#" @click="logout()"> Logout</a>
-        </v-list-item>
-      </v-list>
-    </v-menu>
-    </v-app-bar>
-  </v-app>
+    <v-list class="mt-20">
+      <v-list-item>
+        <router-link to="/MyProfile" class="links" > Profile</router-link>
+      </v-list-item>
+      <v-list-item>
+        <a class="links" href="#" @click="logout()"> Logout</a>
+      </v-list-item>
+    </v-list>
+  </v-menu>
+  </v-app-bar>
 </template>
 
 <script>
@@ -43,7 +47,8 @@ export default {
     return {
       isAuth: false,
       user_id: '',
-      username: ''
+      username: '',
+      image: ''
     }
   },
   created(){
@@ -51,12 +56,26 @@ export default {
       this.isAuth = true
       this.username = window.$cookies.get('auth').username
       this.user_id = window.$cookies.get('auth').user_id
+      eventService.auth.getUser() 
+      .then(res => {
+        if(res.status == 200){
+          this.image = res.data.image.url
+        }
+        })
     }
   },
   methods:{
     logout(){
       const logoutStatus = this.$store.commit('auth/clearToken')
-    }
+    },
   }
 }
 </script>
+<style lang="scss" scoped>
+.mt-20{
+  margin-top: 45px;
+}
+.links{
+  color: #f50057 !important;
+}
+</style>

@@ -62,7 +62,7 @@
                       </v-card-text>
                       <div class="text-center">
                         <router-link to="/SignUp">
-                          <v-btn rounded outlined="" dark @click="step++">
+                          <v-btn rounded outlined="" dark>
                             Sign up
                           </v-btn>
                         </router-link>
