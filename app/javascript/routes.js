@@ -5,6 +5,7 @@ import SignUp from './components/SignUp'
 import navbar from './components/navbar'
 import ForgetPassword from './components/ForgetPassword'
 import MyProfile from './components/MyProfile'
+import ChangePassword from './components/ChangePassword'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,11 @@ export default new VueRouter({
       path: '/MyProfile',
       name: 'MyProfile',
       component: MyProfile
-    }
+    },
+    {
+      path: '/ChangePassword',
+      name: 'ChangePassword',
+      component: ChangePassword
+    },
   ]
 })

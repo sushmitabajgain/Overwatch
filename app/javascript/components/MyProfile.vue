@@ -5,7 +5,7 @@
         <v-row align="center" justify=center>
           <v-col cols="6" sm="4" md="6">
             <v-card elevation="12">
-              <v-window>
+              <v-window class="mt-12">
                   <v-row>
                     <v-col cols="12">
                       <v-card-text class="mt-12">
@@ -32,6 +32,13 @@
 														<h2> Email: </h2>
 														<p> {{ email }} </p>
 													</v-row>
+													<div class="text-center">
+														<router-link to="/ChangePassword">
+															<v-btn rounded  color="pink accent-3" dark>
+																Change Password
+															</v-btn>
+														</router-link>
+													</div>
 												</v-col>
                       </v-card-text>
                     </v-col>
