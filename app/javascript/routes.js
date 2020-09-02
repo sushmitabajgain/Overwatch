@@ -9,6 +9,14 @@ import ChangePassword from './components/ChangePassword'
 
 Vue.use(VueRouter)
 
+const requireAuthenticated = (to, from, next) => {
+  if(!window.$cookies.get('auth')){
+    next({name:'navbar'});
+  }
+  else{
+    next();
+  }
+};
 
 export default new VueRouter({
   scrollBehavior(){
@@ -38,12 +46,14 @@ export default new VueRouter({
     {
       path: '/MyProfile',
       name: 'MyProfile',
-      component: MyProfile
+      component: MyProfile,
+      beforeEnter: requireAuthenticated
     },
     {
       path: '/ChangePassword',
       name: 'ChangePassword',
-      component: ChangePassword
+      component: ChangePassword,
+      beforeEnter: requireAuthenticated
     },
   ]
 })
