@@ -2,6 +2,10 @@ class User < ApplicationRecord
   belongs_to :role,  class_name: "Role"
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+  
+  mount_uploader :image, ImageUploader
+  serialize :image, JSON 
+
   #validation for users
   validates :username, presence: true, :uniqueness => { :message => "Username already present."}
   # validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true

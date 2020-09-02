@@ -25,8 +25,15 @@ const user = {
         },
 
         signUp: ({commit} , userData) => {
-            return new Promise((resolve,reject)=>{
-                eventService.auth.userSignUp(userData)
+                let formData = new FormData();
+                formData.append('username', userData.username)
+                formData.append('email', userData.email)
+                formData.append('role_id', userData.role_id)
+                formData.append('password', userData.password)
+                formData.append('image', userData.image, userData.image.name)
+
+                return new Promise((resolve,reject)=>{
+                eventService.auth.userSignUp(formData)
                 .then(res=>{
                     if(res.status == 201){    
                       {

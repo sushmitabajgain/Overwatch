@@ -13,16 +13,25 @@
                           Home
                         </v-btn>
                       </router-link>
-                      <v-card-text class="mt-12">
-                        <h1 class="text-center display-2 pink--text text--accent-3"> 
-                          New user?
+                      <v-card-text class="mt-0">
+                        <h1 class="text-center pink--text text--accent-3">
+                          Sign Up
                         </h1>
-                        <br>
-                        <h3 class="text-center pink--text text--accent-3">
-                          Please enter your sign up details.
-                        </h3>
                         <div class="mt-4"></div>
                           <v-form @submit.prevent="OnSubmit" ref="form" >
+                            <v-row align="center" justify=center>
+                              <div class="upload-img-wrapper">
+                                <input type="file"
+                                  name="image" @change="previewImage" accept="image/*" ref='image'
+                                  id="image"
+                                >
+                                <span class="file">
+                                    <div class="image-preview" v-if="imageData.length > 0">
+                                    	<img class="preview" :src="imageData">
+                                	</div>
+                                </span>
+                            </div>
+                            </v-row>
                             <v-text-field 
                               name="Username" 
                               label="Username"
@@ -82,7 +91,7 @@
                       </v-card-text>
                       <div class="text-center">
                         <router-link to="/SignIn">
-                          <v-btn rounded outlined="" dark @click="step++">
+                          <v-btn rounded outlined="" dark>
                             Sign In
                           </v-btn>
                         </router-link>
@@ -103,6 +112,9 @@ import eventService from "../eventService"
 export default {
   data(){
     return{
+      user: {
+      },
+      imageData: '',
       username: '',
       select: '',
       nameRules: [
@@ -134,13 +146,27 @@ export default {
     validate () {
       this.$refs.form.validate()
     },
+      OnUpload(field) {
+        document.getElementById(field).click()
+      },
+      previewImage: function(event) {
+        var input = event.target;
+          if (input.files && input.files[0]) {
+          this.user.image = input.files[0]
+          var reader = new FileReader();
+          reader.onload = (e) => {
+            this.imageData = e.target.result;
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      },
+
     OnSubmit: function(){
-      this.$store.dispatch('user/signUp',{
-        username: this.username,
-        email: this.email,
-        password: this.password,
-        role_id: this.select
-      }, {root:true})
+        this.user.username = this.username,
+        this.user.email = this.email,
+        this.user.password = this.password,
+        this.user.role_id = this.select,
+      this.$store.dispatch('user/signUp', this.user)
       .then(response => {
           this.signupSuccessful(response)
       })
@@ -156,4 +182,46 @@ export default {
 .links{
   color: #f50057 !important;
 }
+.upload-img-wrapper,
+.upload-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+
+  .btn {
+    display: none;
+    }
+
+  .file {
+    display: block;
+    background: url(../images/input-upload.svg) no-repeat;
+    height: 126px;
+    width: 125px;
+    }
+
+  input[type=file] {
+    left: 0;
+    height: 177px;
+    opacity: 0;
+    position: absolute;
+    text-indent: -9999px;
+    top: 0;
+    width: 125px;
+  }
+
+  &.upload-wrapper {
+    width: 456px;
+
+    input[type=file] {
+      height: 44px;
+      width: 456px;
+    }
+  }
+}
+
+img.preview {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 </style>
