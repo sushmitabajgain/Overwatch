@@ -62,16 +62,18 @@
                             </v-text-field>
                             <v-text-field 
                               name="Password" 
-                              label="Password" 
-                              type="password"
+                              label="Password"
                               prepend-icon="lock"
-                              color="pink accent-3" 
+                              color="pink accent-3"
+                              :append-icon="value ? 'visibility' : 'visibility_off'"
+                              @click:append="() => (value = !value)"
+                              :type="value ? 'password' : 'text'" 
                               v-model="password"
                               :rules="passwordRules"
                               required>
                             </v-text-field>
                             <div class="text-center mt-3">
-                              <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign up </v-btn>
+                              <v-btn rounded color="pink accent-3" dark type="submit"> Sign up </v-btn>
                             </div>
                           </v-form>
                         <router-link to="/Forgetpassword" class="links">
@@ -113,6 +115,7 @@ import eventService from "../eventService"
 export default {
   data(){
     return{
+      value: String,
       user: {
       },
       imageData: '',
@@ -144,9 +147,6 @@ export default {
     })
   },
   methods:{
-    validate () {
-      this.$refs.form.validate()
-    },
       OnUpload(field) {
         document.getElementById(field).click()
       },
@@ -163,16 +163,21 @@ export default {
       },
 
     OnSubmit: function(){
-        this.user.username = this.username,
-        this.user.email = this.email,
-        this.user.password = this.password,
-        this.user.role_id = this.select,
-      this.$store.dispatch('user/signUp', this.user)
-      .then(response => {
-          this.signupSuccessful(response)
-      })
-      .catch( res => {
-        this.loading = false
+      this.user.username = this.username,
+      this.user.email = this.email,
+      this.user.password = this.password,
+      this.user.role_id = this.select,
+      this.emailRules= this.emailRules
+      this.passwordRules=this.passwordRules
+      this.nameRules=this.nameRules
+      let self = this
+      setTimeout(function () {
+        if (self.$refs.form.validate()){
+          self.$store.dispatch('user/signUp', self.user)
+          .then(response => {
+            self.signupSuccessful(response)
+          })
+        }
       })
     }
   }

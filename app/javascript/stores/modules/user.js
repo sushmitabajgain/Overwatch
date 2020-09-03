@@ -30,7 +30,7 @@ const user = {
                 formData.append('email', userData.email)
                 formData.append('role_id', userData.role_id)
                 formData.append('password', userData.password)
-                formData.append('image', userData.image, userData.image.name)
+                formData.append('image', userData.image)
 
                 return new Promise((resolve,reject)=>{
                 eventService.auth.userSignUp(formData)

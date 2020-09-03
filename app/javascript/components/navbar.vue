@@ -15,17 +15,18 @@
     </div>
     <v-menu v-else>
     <template v-slot:activator="{ on, attrs }">
-      <h3
+      <label
         color="primary"
         dark
         v-bind="attrs"
         v-on="on"
+        class="text"
       >
-      <v-avatar size="36">
-			  <img :src="image" alt="" class="rounded-circle profile_image">
-		  </v-avatar>
-        Hi! {{username}}
-      </h3>
+        <v-avatar size="36">
+          <img :src="image" alt="" class="rounded-circle profile_image">
+        </v-avatar>
+          Hi! {{username}}
+      </label>
     </template>
 
     <v-list class="mt-20">
@@ -75,6 +76,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.text{
+  font-size: 20px;
+}
 .mt-20{
   margin-top: 45px;
 }
