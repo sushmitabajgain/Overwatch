@@ -14,6 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
+gem "google_drive"
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
