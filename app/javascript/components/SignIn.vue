@@ -40,7 +40,7 @@
                             required
                           />
                           <div class="text-center mt-3">
-                            <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Sign in </v-btn>
+                            <v-btn rounded color="pink accent-3" dark type="submit"> Sign in </v-btn>
                           </div>
                         </v-form>
                         <router-link to="/Forgetpassword" class="links">
@@ -79,38 +79,48 @@
 </template>
 
 <script>
-import slider from './slider'
-
   export default {
-    components:{
-      slider
-    },
     data() {
       return {
+        validate: false,
         email: '',
         password: '',
-        emailRules: [
-          v => !!v || 'E-mail is required',
-          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-        ],
-        passwordRules:[
-          v => !!v || 'Password is required',
-          v => v.length >= 6 || 'Min 6 characters',
-        ]
+        emailRules: [],
+        passwordRules:[]
       }
     },
-    methods: {
-      validate () {
-        this.$refs.form.validate()
+    
+    watch: {
+      'email' (val) {
+        this.emailRules = []
       },
-        OnSubmit: function() {
+      'password' (val){
+        this.passwordRules = []
+      }
+    },
+
+    methods: {
+        OnSubmit() {
           const formData = {
             email: this.email,
             password: this.password,
           }
-          this.$store.dispatch('auth/setToken',formData)
-          .catch(error  => {
-            this.$toaster.error(error)
+          this.emailRules= [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+          ],
+          this.passwordRules=[
+            v => !!v || 'Password is required',
+            v => v.length >= 6 || 'Min 6 characters',
+          ]
+          let self = this
+          setTimeout(function () {
+            if (self.$refs.form.validate()){
+              self.$store.dispatch('auth/setToken',formData)
+              .catch(error  => {
+                self.$toaster.error(error)
+              })
+            }
           })
         }
     }
