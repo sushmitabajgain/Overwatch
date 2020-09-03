@@ -35,7 +35,7 @@
                             required
                           />
                           <div class="text-center mt-3">
-                            <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Send </v-btn>
+                            <v-btn rounded color="pink accent-3" dark type="submit"> Send </v-btn>
                           </div>
                         </v-form>
                       </v-card-text>
@@ -63,16 +63,18 @@
     },
 
     methods: {
-    //Email validation
-      validate () {
-        this.$refs.form.validate()
-      },
-    OnSubmit: function() {
-      this.$store.dispatch('auth/userPassword', {
-        user: {
-        email: this.email }}, {root:true})
-        .catch(error =>{
-        this.$toaster.error("Sorry, Something went wrong. Try Again Later!")
+      OnSubmit: function() {
+        this.emailRules= this.emailRules
+        let self = this
+        setTimeout(function () {
+          if (self.$refs.form.validate()){
+            self.$store.dispatch('auth/userPassword', {
+            user: {
+            email: self.email }}, {root:true})
+            .catch(error =>{
+            this.$toaster.error("Sorry, Something went wrong. Try Again Later!")
+            })
+          }
         })
       }
     }

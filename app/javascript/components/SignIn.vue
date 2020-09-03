@@ -15,7 +15,7 @@
                       </router-link>
                       <v-card-text class="mt-12">
                         <h1 class="text-center display-2 pink--text text--accent-3"> 
-                          Sign in
+                          Sign In
                         </h1>
                         <div class="mt-4"></div>
                         <v-form @submit.prevent="OnSubmit" ref="form">
@@ -31,10 +31,12 @@
                           />
                           <v-text-field name="Password"
                             id="password"
-                            label="Password" 
-                            type="password"
+                            label="Password"
                             color="pink accent-3"
                             prepend-icon="lock"
+                            :append-icon="value ? 'visibility' : 'visibility_off'"
+                            @click:append="() => (value = !value)"
+                            :type="value ? 'password' : 'text'"
                             v-model="password"
                             :rules="passwordRules"
                             required
@@ -82,20 +84,17 @@
   export default {
     data() {
       return {
-        validate: false,
+        value: String,
         email: '',
         password: '',
-        emailRules: [],
-        passwordRules:[]
-      }
-    },
-    
-    watch: {
-      'email' (val) {
-        this.emailRules = []
-      },
-      'password' (val){
-        this.passwordRules = []
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        ],
+        passwordRules:[
+          v => !!v || 'Password is required',
+          v => v.length >= 6 || 'Min 6 characters',
+        ]
       }
     },
 
@@ -105,14 +104,8 @@
             email: this.email,
             password: this.password,
           }
-          this.emailRules= [
-            v => !!v || 'E-mail is required',
-            v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-          ],
-          this.passwordRules=[
-            v => !!v || 'Password is required',
-            v => v.length >= 6 || 'Min 6 characters',
-          ]
+          this.emailRules= this.emailRules
+          this.passwordRules=this.passwordRules
           let self = this
           setTimeout(function () {
             if (self.$refs.form.validate()){

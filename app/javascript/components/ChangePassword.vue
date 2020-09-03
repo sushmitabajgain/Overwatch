@@ -18,23 +18,22 @@
                           Change password of your account.
                         </h1>
                         <br>
-                        <p class="text-center pink--text text--accent-3"> 
-                          Enter the valid password.
-                        </p>
                         <div class="mt-4"></div>
                         <v-form @submit.prevent="OnSubmit" ref="form">
                           <v-text-field name="Password"
                             id="password"
-                            label="New Password" 
-                            type="password"
+                            label="New Password"
                             color="pink accent-3"
                             prepend-icon="lock"
+                            :append-icon="value ? 'visibility' : 'visibility_off'"
+                            @click:append="() => (value = !value)"
+                            :type="value ? 'password' : 'text'"
                             v-model="user.password"
                             :rules="passwordRules"
                             required
                           />
                           <div class="text-center mt-3">
-                            <v-btn rounded color="pink accent-3" dark type="submit" @click="validate"> Change </v-btn>
+                            <v-btn rounded color="pink accent-3" dark type="submit"> Change </v-btn>
                           </div>
                         </v-form>
                       </v-card-text>
@@ -55,6 +54,7 @@
     export default {
       data(){
         return {
+          value: String,
           user:{
             password: '',
           },
@@ -66,18 +66,21 @@
         }
       },
       methods: {
-        validate () {
-          this.$refs.form.validate()
-        },
         OnSubmit: function() {
-          eventService.auth.changePassword(this.user)
-          .then(res =>{
-          if(res.status == 201){
-            this.$toaster.success('Your password has been changed successfully!')
-            this.user.password="";
-          }
-          else{
-            this.$toaster.error('Your password has not been submitted!')
+          this.passwordRules=this.passwordRules
+          let self = this
+          setTimeout(function () {
+            if (self.$refs.form.validate()){
+              eventService.auth.changePassword(self.user)
+              .then(res =>{
+              if(res.status == 201){
+                self.$toaster.success('Your password has been changed successfully!')
+                self.user.password="";
+              }
+              else{
+                self.$toaster.error('Your password has not been submitted!')
+              }
+            })
           }
         })
 			}
