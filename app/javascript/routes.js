@@ -2,16 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import navbar from './components/navbar'
 import ForgetPassword from './components/ForgetPassword'
 import MyProfile from './components/MyProfile'
 import ChangePassword from './components/ChangePassword'
+import Home from './components/Home'
 
 Vue.use(VueRouter)
 
 const requireAuthenticated = (to, from, next) => {
   if(!window.$cookies.get('auth')){
-    next({name:'navbar'});
+    next({name:'root-path'});
   }
   else{
     next();
@@ -25,8 +25,8 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'navbar',
-      component: navbar
+      name:'root-path',
+      component: Home
     },
     { 
       path: '/SignIn',
