@@ -66,4 +66,10 @@ export default {
       return apiFeature.delete('/roles/'+role_id)
     }
   },
+
+  project:{
+    getProject(){
+      return apiFeature.get('/projects')
+    }
+  }
 }
