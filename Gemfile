@@ -16,6 +16,7 @@ gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem "google_drive"
 
+gem 'dotenv-rails'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do

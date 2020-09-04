@@ -21,10 +21,10 @@ class Users::SessionsController < Devise::SessionsController
 					render json: { error: 'Invalid login Credentials error.' }, status: :unauthorized
 				end
 			else
-				render json: { error: 'You have to confirm your email address before continuing.' }, status: :unconfirmed
+				render json: { error: 'You have to confirm your email address before continuing.' }, status: :unauthorized
 			end
 		else
-			render json: {error: 'You need to sign up before continuing.'}, status: :unauthenticated
+			render json: {error: 'You need to sign up before continuing.'}, status: :unauthorized
 		end
 	end
 

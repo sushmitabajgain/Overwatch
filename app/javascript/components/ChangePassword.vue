@@ -60,7 +60,7 @@
           },
           passwordRules:[
             v => !!v || 'Password is required',
-            v => v.length >= 6 || 'Min 6 characters',
+            v => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(v) || 'Min. 8 characters with at least one capital letter, a number and a special character.',
           ],
           submitted: false,
         }
