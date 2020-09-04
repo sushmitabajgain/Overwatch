@@ -6,6 +6,10 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   serialize :image, JSON 
 
-  validates_presence_of :username
-  validates_presence_of :email
+  validates_presence_of :email, uniqueness: true
+  validates :username,
+  :presence => true,
+  :uniqueness => {
+    :case_sensitive => false
+  }
 end
