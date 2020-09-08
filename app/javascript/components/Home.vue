@@ -1,48 +1,26 @@
 <template>
-  <div>
-		<navbar />
-
-      <tr v-for="(data,index) in projectData" :key="index" >
-        <span v-for="(project, k) in data" :key="k">
-          <td>{{project}}</td>
-        </span>
-      </tr>
-  </div>
+<div>
+	<navbar />
+  <v-container>
+    <v-row align="center" justify=center>
+      <ProjectStatus />
+        <div class="mt-4"></div>
+      <NumberOfResources />
+    </v-row>
+  </v-container>
+</div>
 </template>
 
 
 <script>
   import navbar from './navbar'
-  import eventService from '../eventService'
+  import NumberOfResources from './NumberOfResources'
+  import ProjectStatus from './ProjectStatus'
   export default {
     components:{
-      navbar
+      navbar,
+      NumberOfResources,
+      ProjectStatus
     },
-    data () {
-      return {
-        headers: "",
-        projectData: ""
-      }
-    },
-    created(){
-      eventService.project.getProject() 
-      .then(res => {
-        if(res.status == 200){
-          this.projectData = res.data
-          console.log(res.data)
-        }  
-      })
-    }
   }
 </script>
-<style lang="scss" scoped>
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>

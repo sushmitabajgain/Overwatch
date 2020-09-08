@@ -70,6 +70,14 @@ export default {
   project:{
     getProject(){
       return apiFeature.get('/projects')
-    }
+    },
+
+    getWorksheet(){
+      return apiFeature.get('/worksheets')
+    },
+
+    getStatusCount(){
+      return apiFeature.get('/status_count')
+    },
   }
 }
