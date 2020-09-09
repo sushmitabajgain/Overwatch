@@ -8,6 +8,8 @@
         <router-link to= "/Resources" class="home"><v-toolbar-title>Resources</v-toolbar-title></router-link>
       </div>
       <v-spacer></v-spacer>
+        <SearchBar />
+      <v-spacer></v-spacer>
     <div v-if="!isAuth">
       <router-link to="/SignIn">
         <v-btn rounded right class="ma-2" outlined="" dark>Sign in</v-btn>
@@ -46,13 +48,17 @@
 
 <script>
 import eventService from '../eventService'
+import SearchBar from './SearchBar'
 export default {
+  components:{
+    SearchBar
+  },
   data(){
     return {
       isAuth: false,
       user_id: '',
       username: '',
-      image: ''
+      image: '',
     }
   },
   created(){
