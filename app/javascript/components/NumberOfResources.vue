@@ -14,7 +14,7 @@
         series: [],
         chartOptions: {
           chart: {
-            width: 800,
+            width: 900,
             type: 'pie',
           }, 
           labels:[],
@@ -39,10 +39,10 @@
 					var count =0;
 					var index;
           for(index in res.data)
-          	if(res.data.length>0){
-              this.series.push(res.data[index].no_of_resources);
-              this.chartOptions.labels.push(res.data[index].project);
-            }
+          if(res.data.length>0){
+            this.series.push(res.data[index].no_of_resources);
+            this.chartOptions.labels.push(res.data[index].project);
+          }
         } 
       })
     },

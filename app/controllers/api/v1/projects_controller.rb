@@ -17,22 +17,12 @@ module Api
       def getStatusCount
         @count = [
                   Project.where(status: "On Track").count,
-                  Project.where(status: "Project on Halt").count,
                   Project.where(status: "Need to Discuss/Back on Track").count,
+                  Project.where(status: "Project on Halt").count,
                   Project.where(status: "Out of Deadline").count,
                   Project.where(status: "Completed Project").count
                 ]
         render json: @count ,status: :ok
-      end
-
-      def create
-        @project = Project.new(project_params)
-        if @project.save
-          render json: @project, status: :created
-        else
-          render json: { errors: @role.errors.full_messages },
-                  status: :unprocessable_entity
-        end
       end
 
       def worksheet

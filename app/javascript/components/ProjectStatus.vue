@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card-title> Project Status</v-card-title>
-    <apexchart width="800" type="bar" :options="options" :series="series"></apexchart>
+    <apexchart width="900" type="bar" :options="options" :series="series"></apexchart>
   </div>
 </template>
 
@@ -27,12 +27,29 @@
           xaxis: {
             categories: [
                           ['On Track'],
-                          ['Project on Halt'], 
                           ['Need to Discuss','Back on Track'],
+                          ['Project on Halt'],
                           ['Out of Deadline'], 
                           ['Completed Project']
-                        ]
+                        ],
+            title: {
+              text: "Status",
+              style: {
+                fontSize: '18px',
+                margin: '12px',
+              }
+            }
           },
+          yaxis: [
+            {
+              title: {
+                text: "Project",
+                style: {
+                  fontSize: '18px',
+                }
+              },
+            }
+          ],
           colors: ['#007700','#C70081', '#FFA500', '#C60400', '#0000A9']
         },
       }
