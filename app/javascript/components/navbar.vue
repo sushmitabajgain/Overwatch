@@ -4,6 +4,9 @@
                     app
     >
       <a href="#" class="home" @click="home()"><v-toolbar-title>Home</v-toolbar-title></a>
+      <div class=" pe-4 ma-4">
+        <router-link to= "/Resources" class="home"><v-toolbar-title>Resources</v-toolbar-title></router-link>
+      </div>
       <v-spacer></v-spacer>
     <div v-if="!isAuth">
       <router-link to="/SignIn">

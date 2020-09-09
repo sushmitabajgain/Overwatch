@@ -63,7 +63,7 @@ export default {
       return {
         chart: {
           type: 'bar',
-          width: "900",
+          width: "800",
           stacked: false
         },
         dataLabels: {

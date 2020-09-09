@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card-title> Project Status</v-card-title>
-    <apexchart width="900" type="bar" :options="options" :series="series"></apexchart>
+    <apexchart width="800" type="bar" :options="options" :series="series"></apexchart>
   </div>
 </template>
 

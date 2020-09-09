@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card-title> Number of resources per project </v-card-title>
-    <apexchart type="pie" width="800" :options="chartOptions" :series="series"></apexchart>
+    <apexchart type="pie" width="700" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 
@@ -14,7 +14,7 @@
         series: [],
         chartOptions: {
           chart: {
-            width: 900,
+            width: 500,
             type: 'pie',
           }, 
           labels:[],

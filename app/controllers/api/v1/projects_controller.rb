@@ -8,11 +8,11 @@ module Api
         render json: projects, status: :ok
       end
 
-      def weekly
-        last = Project.last.week
-        projects= Project.where(week: last)
-        render json: projects, status: :ok
-      end
+      # def weekly
+      #   last = Project.last.week
+      #   projects= Project.where(week: last)
+      #   render json: projects, status: :ok
+      # end
 
       def getStatusCount
         @count = [

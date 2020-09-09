@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'worksheets', :to => 'projects#worksheet'
       get 'projects', :to => 'projects#index'
       get 'status_count', :to => 'projects#getStatusCount'
+      get 'resources', :to => 'resources#resources'
     end
   end
 

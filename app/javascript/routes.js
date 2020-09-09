@@ -6,6 +6,7 @@ import ForgetPassword from './components/ForgetPassword'
 import MyProfile from './components/MyProfile'
 import ChangePassword from './components/ChangePassword'
 import Home from './components/Home'
+import Resources from './components/Resources'
 
 Vue.use(VueRouter)
 
@@ -55,5 +56,10 @@ export default new VueRouter({
       component: ChangePassword,
       beforeEnter: requireAuthenticated
     },
+    {
+      path: '/Resources',
+      name: 'Resources',
+      component: Resources
+    }
   ]
 })

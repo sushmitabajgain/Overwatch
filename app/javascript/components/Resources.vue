@@ -3,8 +3,8 @@
 	<navbar />
   <v-container>
     <v-row align="center" justify=center>
-      <ProjectStatus />
-      <Milestone />
+      <NumberOfResources />
+      <ProjectVsName />
     </v-row>
   </v-container>
 </div>
@@ -13,13 +13,13 @@
 
 <script>
   import navbar from './navbar'
-  import ProjectStatus from './ProjectStatus'
-  import Milestone from './Milestone'
+  import NumberOfResources from './NumberOfResources'
+  import ProjectVsName from './ProjectVsName'
   export default {
     components:{
       navbar,
-      ProjectStatus,
-      Milestone,
+      NumberOfResources,
+      ProjectVsName
     },
   }
 </script>

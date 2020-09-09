@@ -79,5 +79,9 @@ export default {
     getStatusCount(){
       return apiFeature.get('/status_count')
     },
+
+    getResource(){
+      return apiFeature.get('/resources')
+    }
   }
 }
