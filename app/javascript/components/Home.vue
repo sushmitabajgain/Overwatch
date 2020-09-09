@@ -3,10 +3,8 @@
 	<navbar />
   <v-container>
     <v-row align="center" justify=center>
-      <Milestone />
       <ProjectStatus />
-      <div class="mt-4"></div>
-      <div class="mt-4"></div>
+      <Milestone />
       <NumberOfResources />
     </v-row>
   </v-container>
