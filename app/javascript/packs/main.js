@@ -19,6 +19,11 @@ import axios from 'axios'
 import Toaster from 'v-toaster'
 import VuejsDialog from 'vuejs-dialog';
 import 'vuejs-dialog/dist/vuejs-dialog.min.css';
+import VueApexCharts from 'vue-apexcharts'
+
+Vue.use(VueApexCharts)
+
+Vue.component('apexchart', VueApexCharts)
 
 axios.defaults.baseURL = 'http://localhost:3000'
 Vue.config.productionTip = false

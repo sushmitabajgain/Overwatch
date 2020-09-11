@@ -66,4 +66,28 @@ export default {
       return apiFeature.delete('/roles/'+role_id)
     }
   },
+
+  project:{
+    getProject(){
+      return apiFeature.get('/projects')
+    },
+
+    getWorksheet(){
+      return apiFeature.get('/worksheets')
+    },
+
+    getStatusCount(){
+      return apiFeature.get('/status_count')
+    },
+
+    getResource(){
+      return apiFeature.get('/resources')
+    }
+  },
+
+  searchProject: {
+    getSearchList(searchData){
+      return apiFeature.get('/search', {params: searchData})
+    }
+  },
 }

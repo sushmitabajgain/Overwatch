@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import user from './modules/user'
 import auth from './modules/auth'
+import search from './modules/search'
 import VueCookies from 'vue-cookies'
 
 Vue.use(VueCookies)
@@ -10,6 +11,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     modules: {
         user: user,
-        auth
+        auth,
+        search
     },
 })
