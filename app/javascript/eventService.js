@@ -83,5 +83,11 @@ export default {
     getResource(){
       return apiFeature.get('/resources')
     }
-  }
+  },
+
+  searchProject: {
+    getSearchList(searchData){
+      return apiFeature.get('/search', {params: searchData})
+    }
+  },
 }

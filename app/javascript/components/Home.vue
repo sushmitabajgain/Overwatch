@@ -2,10 +2,8 @@
 <div>
 	<navbar />
   <v-container>
-    <v-row align="center" justify=center>
       <ProjectStatus />
       <Milestone />
-    </v-row>
   </v-container>
 </div>
 </template>

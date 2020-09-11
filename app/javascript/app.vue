@@ -23,4 +23,22 @@ export default {
     right: 50%;
     left: 50%;
   }
+
+  h2 {
+  color: rgb(59, 39, 39);
+  font-size: 36px;
+  padding-bottom: 20px;
+
+  &:before {
+    color: #FFAB02;
+    content: '|';
+    font-size: 30px;
+    font-weight: 300;
+    font-family: Raleway;
+    padding-right: 20px;
+    position: relative;
+    top: -3px;
+  }
+
+}
 </style>

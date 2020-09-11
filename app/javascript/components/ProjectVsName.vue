@@ -1,6 +1,6 @@
 <template>
-  <div class="ma-16">
-    <v-card-title> Resource Engaged in Multiple Projects vs Name</v-card-title>
+  <div class="mt-16">
+    <h2> Resource Engaged in Multiple Projects vs Name</h2>
     <apexchart width="800" type="bar" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>

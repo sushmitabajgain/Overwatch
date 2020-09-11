@@ -1,6 +1,6 @@
 <template>
-  <div id="chart">
-    <v-card-title> Milestone Status</v-card-title>
+  <div class="mt-16">
+    <h2> Milestone Status</h2>
     <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>

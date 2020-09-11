@@ -2,10 +2,8 @@
 <div>
 	<navbar />
   <v-container>
-    <v-row align="center" justify=center>
-      <NumberOfResources />
-      <ProjectVsName />
-    </v-row>
+    <NumberOfResources />
+    <ProjectVsName />
   </v-container>
 </div>
 </template>

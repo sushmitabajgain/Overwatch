@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'projects', :to => 'projects#index'
       get 'status_count', :to => 'projects#getStatusCount'
       get 'resources', :to => 'resources#resources'
+      get 'search', :to=> 'search#index'
     end
   end
 
