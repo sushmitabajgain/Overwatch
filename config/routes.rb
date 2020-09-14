@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :users
       resources :roles
-      get 'worksheets', :to => 'projects#worksheet'
       get 'projects', :to => 'projects#index'
       get 'status_count', :to => 'projects#getStatusCount'
       get 'resources', :to => 'resources#resources'
