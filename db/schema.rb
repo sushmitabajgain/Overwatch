@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_095934) do
+ActiveRecord::Schema.define(version: 2020_09_14_105251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
     t.integer "sn"
-    t.integer "week"
     t.string "status"
     t.string "project"
     t.string "start_date"
@@ -28,6 +27,10 @@ ActiveRecord::Schema.define(version: 2020_09_09_095934) do
     t.string "no_of_milestone"
     t.string "completed_milestone"
     t.string "missed_milestone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "week_id"
+    t.index ["week_id"], name: "index_projects_on_week_id"
   end
 
   create_table "resources", force: :cascade do |t|
@@ -63,5 +66,12 @@ ActiveRecord::Schema.define(version: 2020_09_09_095934) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "weeks", force: :cascade do |t|
+    t.integer "week"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "projects", "weeks"
   add_foreign_key "users", "roles"
 end

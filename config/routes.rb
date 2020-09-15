@@ -3,10 +3,13 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :users
       resources :roles
-      get 'projects', :to => 'projects#index'
-      get 'status_count', :to => 'projects#getStatusCount'
+      resources :weeks do
+        resources :projects
+      end
+      get 'projects', :to => 'projects#projects'
       get 'resources', :to => 'resources#resources'
       get 'search', :to=> 'search#index'
+
     end
   end
 
