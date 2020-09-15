@@ -2,27 +2,26 @@ module Api
   module V1
     class ProjectsController < ApplicationController
       skip_before_action :verify_authenticity_token
+      before_action :get_week, only: :index
 
       def index
-        projects = Project.all
+        projects = @week.projects.all.order("created_at DESC")
         render json: projects, status: :ok
       end
 
-      def getStatusCount
-        @count = [
-                  Project.where(status: "On Track").count,
-                  Project.where(status: "Need to Discuss/Back on Track").count,
-                  Project.where(status: "Project on Halt").count,
-                  Project.where(status: "Out of Deadline").count,
-                  Project.where(status: "Completed Project").count
-                ]
-        render json: @count ,status: :ok
+      def projects
+        projects = Project.all.order("created_at DESC")
+        render json: projects, status: :ok
       end
 
       private
+
+      def get_week
+        @week = Week.find(params[:week_id])
+      end
       
       def project_params
-        params.permit(:sn, :status, :project, :start_date, :end_date, :extended_date, :notes, :week,
+        params.permit(:sn, :status, :project, :start_date, :end_date, :extended_date, :notes, :week_id,
                        :no_of_resources, :no_of_milestone, :completed_milestone, :missed_milestone)
       end
     end

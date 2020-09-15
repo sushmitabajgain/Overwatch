@@ -1,10 +1,12 @@
 class Project < ApplicationRecord
+  belongs_to :week,  class_name: "Week"
   def self.get_worksheet
     @session ||= GoogleDrive::Session.from_service_account_key("client_secret.json")
     @spreedsheet ||= @session.spreadsheet_by_title("Project Data")
     @worksheet ||= @spreedsheet.worksheets.first
     @projects = (@worksheet.rows - [@worksheet.rows.first] - [@worksheet.rows.second])
     @week = @worksheet.rows.first
+    Week.create(week: @week.second.to_i)
       @projects.each do |i|
         sn = i[0]
         status = i[1]

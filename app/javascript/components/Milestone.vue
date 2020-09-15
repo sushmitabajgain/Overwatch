@@ -1,6 +1,6 @@
 <template>
   <div class="mt-16">
-    <h2> Milestone Status</h2>
+    <h2> Milestone Status (Week {{currentWeek}})</h2>
     <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
@@ -10,6 +10,7 @@ import eventService from '../eventService'
 export default {
   data() {
     return{  
+      currentWeek: '',
       missed_milestone:[],
       no_of_milestone: [],
       completed_milestone: [],
@@ -17,29 +18,31 @@ export default {
     }
   },
   created(){
-    eventService.project.getProject() 
-    .then(res => {
-      if(res.status == 200){
-      var count =0;
-      var index;
-      for(index in res.data)
-        if(res.data.length>0){
-          if (res.data[index].no_of_milestone !== ""){
-            this.no_of_milestone.push(res.data[index].no_of_milestone);
-          }
-          if (res.data[index].missed_milestone !== ""){
-            this.missed_milestone.push(res.data[index].missed_milestone);
-          }
-          if (res.data[index].completed_milestone !== ""){
-            this.completed_milestone.push(res.data[index].completed_milestone);
-          }
-          if ((res.data[index].completed_milestone !== "") ||(res.data[index].no_of_milestone !== "") || (res.data[index].missed_milestone !== "")){
-            this.projects.push(res.data[index].project);
+    setTimeout(() => {
+      this.currentWeek = localStorage.getItem('week');
+      eventService.project.getWeeklyProject(this.currentWeek) 
+      .then(res => {
+        if(res.status == 200){
+        var count =0;
+        var index;
+        for(index in res.data)
+          if(res.data.length>0){
+            if (res.data[index].no_of_milestone !== ""){
+              this.no_of_milestone.push(res.data[index].no_of_milestone);
+            }
+            if (res.data[index].missed_milestone !== ""){
+              this.missed_milestone.push(res.data[index].missed_milestone);
+            }
+            if (res.data[index].completed_milestone !== ""){
+              this.completed_milestone.push(res.data[index].completed_milestone);
+            }
+            if ((res.data[index].completed_milestone !== "") ||(res.data[index].no_of_milestone !== "") || (res.data[index].missed_milestone !== "")){
+              this.projects.push(res.data[index].project);
+            }
           }
         }
-      }
-    })
-
+      })
+    }, 2000);
   },
   computed: {
     series: function() {
