@@ -21,15 +21,15 @@
                         <div class="mt-4"></div>
 												<v-col class="pink--text text--accent-3">
 													<v-row justify=center>
-														<h2> Role: </h2>
+														<h4> Role: </h4>
 														<p> {{ role }} </p>
 													</v-row>
 													<v-row justify=center>
-														<h2> Username: </h2>
+														<h4> Username: </h4>
 														<p> {{ username }} </p>
 													</v-row>
 													<v-row justify=center>
-														<h2> Email: </h2>
+														<h4> Email: </h4>
 														<p> {{ email }} </p>
 													</v-row>
 													<div class="text-center">

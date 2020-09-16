@@ -8,7 +8,6 @@ import ChangePassword from './components/ChangePassword'
 import Home from './components/Home'
 import Resources from './components/Resources'
 import Project from './components/Project'
-import Test from './components/Test'
 
 Vue.use(VueRouter)
 
@@ -68,10 +67,5 @@ export default new VueRouter({
       name: 'Project',
       component: Project
     },
-    {
-      path: '/Test',
-      name: 'Test',
-      component: Test
-    }
   ]
 })

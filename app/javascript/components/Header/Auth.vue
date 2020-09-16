@@ -69,3 +69,18 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .text{
+    font-size: 20px;
+  }
+
+  .links{
+    color: #f50057 !important;
+  }
+
+  .mt-20{
+	  margin-top: 45px;
+	}
+
+</style>

@@ -2,7 +2,7 @@
   <div class="d-flex flex-no-wrap justify-space-between">  
     <div>
       <h2>Project Status (Week {{currentWeek}})</h2>
-      <apexchart width="800" type="pie" :options="chartOptions" :series="series"></apexchart>
+      <apexchart width="700" type="pie" :options="chartOptions" :series="series"></apexchart>
     </div>
     <div>
       <table id="projects">
