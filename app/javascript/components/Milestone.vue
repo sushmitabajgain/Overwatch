@@ -1,7 +1,18 @@
 <template>
   <div class="mt-16">
     <h2> Milestone Status (Week {{currentWeek}})</h2>
-    <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
+    <div class="loading" v-if="loading">
+      Loading...
+      <v-progress-linear
+            color="pink accent-3"
+            indeterminate
+            rounded
+            height="6"
+          ></v-progress-linear>
+    </div>
+    <div v-else>
+      <apexchart type="bar" width="800" :options="chartOptions" :series="series"></apexchart>
+    </div>
   </div>
 </template>
 
@@ -10,6 +21,7 @@ import eventService from '../eventService'
 export default {
   data() {
     return{  
+      loading: true,
       currentWeek: '',
       missed_milestone:[],
       no_of_milestone: [],
@@ -40,6 +52,7 @@ export default {
               this.projects.push(res.data[index].project);
             }
           }
+          this.loading = false;
         }
       })
     }, 2000);

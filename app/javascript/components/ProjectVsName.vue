@@ -1,7 +1,18 @@
 <template>
   <div class="mt-16">
     <h2> Resource Engaged in Multiple Projects (Week {{currentWeek}})</h2>
-    <apexchart width="800" height="200" type="bar" :options="chartOptions" :series="series"></apexchart>
+    <div class="loading" v-if="loading">
+      Loading...
+      <v-progress-linear
+            color="pink accent-3"
+            indeterminate
+            rounded
+            height="6"
+          ></v-progress-linear>
+    </div>
+    <div v-else>
+      <apexchart width="800" height="200" type="bar" :options="chartOptions" :series="series"></apexchart>
+    </div>
   </div>
 </template>
 
@@ -11,6 +22,7 @@
   export default {
     data() {
       return{
+        loading: true,
         currentWeek: '',
         multiple_resource: [],
         name: [],
@@ -29,6 +41,7 @@
               this.multiple_resource.push(res.data[index].multiple);
               this.name.push(res.data[index].name);
             }
+            this.loading = false;
           }
         })
       }, 2000);

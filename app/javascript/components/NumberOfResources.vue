@@ -1,7 +1,18 @@
 <template>
   <div>
     <h2> Number of resources per project (Week {{currentWeek}}) </h2>
-    <apexchart type="pie" width="700" :options="chartOptions" :series="series"></apexchart>
+    <div class="loading" v-if="loading">
+      Loading...
+      <v-progress-linear
+            color="pink accent-3"
+            indeterminate
+            rounded
+            height="6"
+          ></v-progress-linear>
+    </div>
+    <div v-else>
+      <apexchart type="pie" width="700" :options="chartOptions" :series="series"></apexchart>
+    </div>
   </div>
 </template>
 
@@ -11,6 +22,7 @@
   export default {
     data() {
       return{
+        loading: true,
         currentWeek: '',
         series: [],
         chartOptions: {
@@ -46,6 +58,7 @@
               this.series.push(res.data[index].no_of_resources);
               this.chartOptions.labels.push(res.data[index].project);
             }
+            this.loading = false;
           } 
         })
       }, 2000);    
