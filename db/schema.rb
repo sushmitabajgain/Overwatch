@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_09_14_105251) do
   create_table "resources", force: :cascade do |t|
     t.integer "multiple"
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "roles", force: :cascade do |t|
