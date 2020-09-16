@@ -68,21 +68,27 @@ export default {
   },
 
   project:{
+    getWeeklyProject(week_id){
+      return apiFeature.get('/weeks/'+week_id+'/projects')
+    },
+
     getProject(){
       return apiFeature.get('/projects')
     },
 
-    getWorksheet(){
-      return apiFeature.get('/worksheets')
-    },
-
-    getStatusCount(){
-      return apiFeature.get('/status_count')
+    getWeeklyResource(week_id){
+      return apiFeature.get('/weeks/'+week_id+'/resources')
     },
 
     getResource(){
       return apiFeature.get('/resources')
     }
+  },
+
+  weeks:{
+    getWeek(){
+      return apiFeature.get('/weeks')
+    },
   },
 
   searchProject: {

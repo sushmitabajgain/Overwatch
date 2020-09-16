@@ -1,8 +1,8 @@
 <template>
   <div class="d-flex flex-no-wrap justify-space-between">  
     <div>
-      <h2>Project Status</h2>
-      <apexchart width="800" type="pie" :options="chartOptions" :series="series"></apexchart>
+      <h2>Project Status (Week {{currentWeek}})</h2>
+      <apexchart width="700" type="pie" :options="chartOptions" :series="series"></apexchart>
     </div>
     <div>
       <table id="projects">
@@ -90,71 +90,79 @@
   export default {
     data() {
       return{
+        currentWeek: '',
         on_track_projects: [],
         discuss_projects:[],
         halt_projects:[],
         deadline_projects:[],
         completed_projects:[],
-        series: [],
-          chartOptions: {
-            chart: {
-              width: 500,
-              type: 'pie',
-            },
-            colors: ['#00C853','#AB47BC', '#FB8C00', '#E53935', '#1E88E5'],
-            labels: [
-                      ['On Track'],
-                      ['Need to Discuss/Back on Track'],
-                      ['Project on Halt'],
-                      ['Out of Deadline'], 
-                      ['Completed Project']
-                    ],
-            responsive: [{
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200
-                },
-                legend: {
-                  position: 'bottom'
-                }
+        chartOptions: {
+          chart: {
+            width: 500,
+            type: 'pie',
+          },
+          colors: ['#00C853','#AB47BC', '#FB8C00', '#E53935', '#1E88E5'],
+          labels: [
+                    ['On Track'],
+                    ['Need to Discuss/Back on Track'],
+                    ['Project on Halt'],
+                    ['Out of Deadline'], 
+                    ['Completed Project']
+                  ],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
               }
-            }]
-          }
+            }
+          }]
         }
-      },        
+      }
+    },        
     created(){
-      eventService.project.getStatusCount() 
-      .then(res => {
-        if(res.status == 200){
-          this.series = res.data
-        }
-      })
-      eventService.project.getProject() 
-      .then(res => {
-        if(res.status == 200){
-        var count =0;
-        var index;
-        for(index in res.data)
-          if(res.data.length>0){
-            if (res.data[index].status == "On Track"){
-              this.on_track_projects.push(res.data[index].project);
-            }
-            if (res.data[index].status == "Need to Discuss/Back on Track"){
-              this.discuss_projects.push(res.data[index].project);
-            }
-            if (res.data[index].status == "Project on Halt"){
-              this.halt_projects.push(res.data[index].project);
-            }
-            if (res.data[index].status == "Out of Deadline"){
-              this.deadline_projects.push(res.data[index].project);
-            }
-            if (res.data[index].status == "Completed Project"){
-              this.completed_projects.push(res.data[index].project);
+      setTimeout(() => {
+        this.currentWeek = localStorage.getItem('week');
+        eventService.project.getWeeklyProject(this.currentWeek) 
+        .then(res => {
+          if(res.status == 200){
+          var count =0;
+          var index;
+          for(index in res.data)
+            if(res.data.length>0){
+              if (res.data[index].status == "On Track"){
+                this.on_track_projects.push(res.data[index].project);
+              }
+              if (res.data[index].status == "Need to Discuss/Back on Track"){
+                this.discuss_projects.push(res.data[index].project);
+              }
+              if (res.data[index].status == "Project on Halt"){
+                this.halt_projects.push(res.data[index].project);
+              }
+              if (res.data[index].status == "Out of Deadline"){
+                this.deadline_projects.push(res.data[index].project);
+              }
+              if (res.data[index].status == "Completed Project"){
+                this.completed_projects.push(res.data[index].project);
+              }
             }
           }
-        }
-      })
+        })
+      }, 2000);
+    },
+    computed: {
+      series: function(){
+        return  [
+                  this.on_track_projects.length,
+                  this.discuss_projects.length,
+                  this.halt_projects.length,
+                  this.deadline_projects.length,
+                  this.completed_projects.length
+                ]
+      }
     },
   }
 </script>

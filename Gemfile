@@ -15,6 +15,8 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem "google_drive"
+gem 'bundler', '~> 2.1', '>= 2.1.4'
+gem "whenever"
 
 gem 'dotenv-rails'
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,7 +1,7 @@
 <template>
   <div class="mt-16">
-    <h2> Resource Engaged in Multiple Projects vs Name</h2>
-    <apexchart width="800" type="bar" :options="chartOptions" :series="series"></apexchart>
+    <h2> Resource Engaged in Multiple Projects (Week {{currentWeek}})</h2>
+    <apexchart width="800" height="200" type="bar" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 
@@ -11,23 +11,27 @@
   export default {
     data() {
       return{
+        currentWeek: '',
         multiple_resource: [],
         name: [],
       }
     },
     created(){
-      eventService.project.getResource() 
-      .then(res => {
-        if(res.status == 200){
-        var count =0;
-        var index;
-        for(index in res.data)
-          if(res.data.length>0){
-            this.multiple_resource.push(res.data[index].multiple);
-            this.name.push(res.data[index].name);
+      setTimeout(() => {
+        this.currentWeek = localStorage.getItem('week');
+        eventService.project.getWeeklyResource(this.currentWeek) 
+        .then(res => {
+          if(res.status == 200){
+          var count =0;
+          var index;
+          for(index in res.data)
+            if(res.data.length>0){
+              this.multiple_resource.push(res.data[index].multiple);
+              this.name.push(res.data[index].name);
+            }
           }
-        }
-      })
+        })
+      }, 2000);
     },
     computed: {
       series: function() {
