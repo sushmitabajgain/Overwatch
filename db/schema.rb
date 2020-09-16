@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_105251) do
+ActiveRecord::Schema.define(version: 2020_09_16_063801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_09_14_105251) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "week_id"
+    t.index ["week_id"], name: "index_resources_on_week_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -75,5 +77,6 @@ ActiveRecord::Schema.define(version: 2020_09_14_105251) do
   end
 
   add_foreign_key "projects", "weeks"
+  add_foreign_key "resources", "weeks"
   add_foreign_key "users", "roles"
 end

@@ -76,6 +76,10 @@ export default {
       return apiFeature.get('/projects')
     },
 
+    getWeeklyResource(week_id){
+      return apiFeature.get('/weeks/'+week_id+'/resources')
+    },
+
     getResource(){
       return apiFeature.get('/resources')
     }
