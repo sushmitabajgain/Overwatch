@@ -1,6 +1,8 @@
 <template>
-  <div class="mt-16">
-    <h2> Milestone Status (Week {{currentWeek}})</h2>
+  <v-card class="ma-3">
+    <v-row justify="center" class="pa-3">
+      <h2> Milestone Status (Week {{currentWeek}})</h2>
+    </v-row>
     <div class="loading" v-if="loading">
       Loading...
       <v-progress-linear
@@ -11,9 +13,9 @@
           ></v-progress-linear>
     </div>
     <div v-else>
-      <apexchart type="bar" width="800" :options="chartOptions" :series="series"></apexchart>
+      <apexchart type="bar" height="400" :options="chartOptions" :series="series"></apexchart>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script>
@@ -77,10 +79,13 @@ export default {
 
     chartOptions: function(){
       return {
+        colors: ['#29B6F6', '#64DD17', '#d50000'],
         chart: {
           type: 'bar',
-          width: "800",
-          stacked: false
+          stacked: false,
+          toolbar: {
+            show: false
+          },
         },
         dataLabels: {
           enabled: true
@@ -90,11 +95,35 @@ export default {
           title: {
             text: "Projects",
             style: {
-              fontSize: '18px',
+              fontSize: '16px',
               margin: '12px',
+              color: '#37474F'
             }
-          }
+          },
+          labels: {
+            style: {
+              colors: "#37474F",
+              fontSize: '10px'
+            }
+          },
         },
+        yaxis: [
+            {
+              labels: {
+                style: {
+                  colors: "#37474F",
+                  fontSize: '10px'
+                }
+              },
+              title: {
+                text: "Milestone",
+                style: {
+                  fontSize: '16px',
+                  color: '#37474F'
+                }
+              },
+            }
+        ]
       }
     }
   }

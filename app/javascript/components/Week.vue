@@ -6,7 +6,7 @@
         :items="weeks"
         @input="weekChanged"
         label="Select Week"
-        color="pink accent-3"
+        color="#041037"
         append-icon="event"
       >
       </v-select>

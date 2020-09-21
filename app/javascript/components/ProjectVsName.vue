@@ -1,6 +1,8 @@
 <template>
-  <div class="mt-16">
-    <h2> Resource Engaged in Multiple Projects (Week {{currentWeek}})</h2>
+  <v-card class="ma-3">
+    <v-row justify="center" class="pa-3">
+      <h2> Resource Engaged in Multiple Projects (Week {{currentWeek}})</h2>
+    </v-row>
     <div class="loading" v-if="loading">
       Loading...
       <v-progress-linear
@@ -11,9 +13,11 @@
           ></v-progress-linear>
     </div>
     <div v-else>
-      <apexchart width="800" height="200" type="bar" :options="chartOptions" :series="series"></apexchart>
+      <div d-flex flex-no-wrap justify-space-between>
+        <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
+      </div>
     </div>
-  </div>
+  </v-card>
 </template>
 
 
@@ -51,6 +55,7 @@
         return [
           {
             data: this.multiple_resource,
+            name: "Projects"
           },
         ]
       },
@@ -58,20 +63,30 @@
         return {
           chart: {
             type: 'bar',
-            width: "800",
-            height: "200",
+            width: "600",
+            toolbar: {
+              show: false
+            },
             stacked: false
           },
+          colors: "#FF5722",
           dataLabels: {
             enabled: true
           },
           xaxis: {
             categories: this.name,
+            labels: {
+              style: {
+                colors: "#37474F",
+                fontSize: '10px'
+              }
+            },
             title: {
               text: "Resources",
               style: {
                 fontSize: '16px',
                 margin: '12px',
+                color: '#37474F'
               }
             }
           },
@@ -81,8 +96,15 @@
                 text: "Project",
                 style: {
                   fontSize: '16px',
+                  color: '#37474F'
                 }
               },
+              labels: {
+                style: {
+                  colors: "#37474F",
+                  fontSize: '10px'
+                }
+              }
             }
           ],
         }

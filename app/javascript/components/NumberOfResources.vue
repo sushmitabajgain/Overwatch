@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <h2> Number of resources per project (Week {{currentWeek}}) </h2>
+  <v-card class="ma-3">
+    <v-row justify="center" class="pa-3">
+      <h2> Number Of Resources Per Project (Week {{currentWeek}}) </h2>
+    </v-row>
     <div class="loading" v-if="loading">
       Loading...
       <v-progress-linear
@@ -11,9 +13,9 @@
           ></v-progress-linear>
     </div>
     <div v-else>
-      <apexchart type="pie" width="700" :options="chartOptions" :series="series"></apexchart>
+      <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
     </div>
-  </div>
+  </v-card>
 </template>
 
 
@@ -24,24 +26,51 @@
       return{
         loading: true,
         currentWeek: '',
-        series: [],
+        data: [],
         chartOptions: {
           chart: {
-            width: 500,
-            type: 'pie',
-          }, 
+            width: 600,
+            type: 'bar',
+            toolbar: {
+              show: false
+            },
+          },
+          colors: "#F50057",
+          plotOptions: {
+            bar: {
+              horizontal: true,
+            }
+          },
+          dataLabels: {
+            enabled: true
+          },
           labels:[],
-          responsive: [{
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 500
-              },
-              legend: {
-                position: 'bottom'
+          xaxis: {
+            labels: {
+              rotate: -45,
+              style: {
+                fontSize: '10px', 
+              }
+            },
+            title: {
+              text: "Resources",
+              style: {
+                fontSize: '16px',
+                color: '#37474F'
               }
             }
-          }]
+          },
+          yaxis: [
+            {
+              title: {
+                text: "Resources",
+                style: {
+                  fontSize: '16px',
+                  color: '#37474F'
+                }
+              },
+            }
+          ]
         },
       }
     },
@@ -55,7 +84,7 @@
             var index;
             for(index in res.data)
             if(res.data.length>0){
-              this.series.push(res.data[index].no_of_resources);
+              this.data.push(res.data[index].no_of_resources);
               this.chartOptions.labels.push(res.data[index].project);
             }
             this.loading = false;
@@ -63,5 +92,15 @@
         })
       }, 2000);    
     },
+    computed: {
+      series: function() {
+        return [
+          {
+            data: this.data,
+            name: "Resources"
+          },
+        ]
+      },
+    }
   }
 </script>

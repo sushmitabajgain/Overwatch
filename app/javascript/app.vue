@@ -25,20 +25,19 @@ export default {
   }
 
   h2 {
-  color: rgb(59, 39, 39);
-  font-size: 36px;
-  padding-bottom: 20px;
+  font-size: 16px;
+  padding-bottom: 5px;
+  color: #37474F;
 
   &:before {
     color: #FFAB02;
     content: '|';
-    font-size: 30px;
+    font-size: 16px;
     font-weight: 300;
     font-family: Raleway;
-    padding-right: 20px;
+    padding-right: 5px;
     position: relative;
     top: -3px;
   }
-
 }
 </style>
