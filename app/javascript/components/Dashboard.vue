@@ -1,15 +1,16 @@
 <template>
       <v-navigation-drawer
-        absolute
+        app
+        floating
         color="#041037"
-        width="200px"
+        width="230px"
       >
         <v-list
           dense
           nav
           class="py-0"
         >
-          <v-list-item two-line :class="miniVariant && 'px-0'">
+          <v-list-item>
             <v-list-item-avatar>
               <img src="../images/pm.png" >
             </v-list-item-avatar>

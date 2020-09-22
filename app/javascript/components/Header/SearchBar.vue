@@ -1,16 +1,20 @@
 <template>
-    <v-form @submit.prevent="OnSubmit" class="mt-8" >
+    <v-form @submit.prevent="OnSubmit">
       <v-row>
-      <v-select
-        v-model="select"
-        :items="projects" item-value="id" item-text="name"
-        light
-        solo
-        color="pink accent-3"
-        append-icon="search"
-        placeholder="Search Project...">
-      </v-select>
-      <v-btn large right class="ma-1" outlined="" dark type="submit"> Search </v-btn>
+          <v-autocomplete
+            v-model="select"
+            :loading="isLoading"
+            :items="projects" item-value="id" item-text="name"
+            hide-details
+            single-line
+            solo
+            hide-no-data
+            hide-selected
+            style="width: 400px;"
+            placeholder="Start typing to Search"
+          >
+          </v-autocomplete>
+      <v-btn icon type="submit" class="pa-2"> <v-icon>search</v-icon> </v-btn>
       </v-row>
     </v-form>
 </template>
@@ -21,7 +25,8 @@ export default {
   data(){
     return{
       select: '',
-      projects: []
+      projects: [],
+      isLoading: false,
     }
   },
   created(){
@@ -47,7 +52,7 @@ export default {
         .then(res=>{
           this.search = searchData
           this.$store.commit('search/setLocalSearchStorage',this.search)
-          this.$router.push({path: "/Project"})
+          this.$router.push({path: "/Project/id"})
         })
       }
     }

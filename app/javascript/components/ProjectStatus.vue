@@ -19,9 +19,10 @@
             <th style="background-color: #29B6F6;">On Track </th>
           </tr>
           <template v-if="on_track_projects.length>0">
-            <tr v-for="project in on_track_projects" :key="project">
-              <td> {{project}}</td>
-            </tr>
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}" 
+							v-for="project in on_track_projects" :key="project" exact :style="{ cursor: 'pointer'}">              
+                <td> {{project}}</td>
+            </router-link>
           </template>
           <template v-else>
             <tr>
@@ -34,9 +35,10 @@
             <th style="background-color: #d50000;">Out of Deadline</th>
           </tr>
           <template v-if="deadline_projects.length>0">
-            <tr v-for="project in deadline_projects" :key="project">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in deadline_projects" :key="project" exact :style="{ cursor: 'pointer'}">
               <td> {{project}}</td>
-            </tr>
+            </router-link>
           </template>
           <template v-else>
             <tr>
@@ -54,9 +56,10 @@
             <th style="background-color: #FFEA00;">Project on Halt</th>
           </tr>
           <template v-if="halt_projects.length>0">
-            <tr v-for="project in halt_projects" :key="project">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in halt_projects" :key="project" exact :style="{ cursor: 'pointer'}">
               <td> {{project}}</td>
-            </tr>
+            </router-link>
           </template>
           <template v-else>
             <tr>
@@ -69,9 +72,10 @@
             <th style="background-color: #64DD17;">Completed Projects</th>
           </tr>
           <template v-if="completed_projects.length>0">
-            <tr v-for="project in completed_projects" :key="project">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in completed_projects" :key="project" exact :style="{ cursor: 'pointer'}">
               <td> {{project}}</td>
-            </tr>
+            </router-link>
           </template>
           <template v-else>
             <tr>
@@ -84,9 +88,10 @@
             <th style="background-color: #D500F9;">Need to Discuss/Back on Track</th>
           </tr>
           <template v-if="discuss_projects.length>0">
-            <tr v-for="project in discuss_projects" :key="project">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in discuss_projects" :key="project" exact :style="{ cursor: 'pointer'}">
               <td> {{project}}</td>
-            </tr>
+            </router-link>
           </template>
           <template v-else>
             <tr>

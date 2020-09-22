@@ -3,7 +3,7 @@
     <v-col class="d-flex" cols="12" sm="2">
       <v-select 
         v-model="currentWeek"
-        :items="weeks"
+        :items="date" item-value="id" item-text="posted_date.date"
         @input="weekChanged"
         label="Select Week"
         color="#041037"
@@ -20,26 +20,23 @@ export default {
   data(){
     return{
       currentWeek: '',
-      weeks: [],
+      date:[],
+      week: ''
     }
   },
   created(){
     eventService.weeks.getWeek()
     .then(res=>{
       if(res.status == 200){
-        var count =0;
-        var index;
-        for(index in res.data)
-        if(res.data.length>0){
-          this.weeks.push(res.data[index].week)
-        }
+        this.date = res.data
       }
     })
   },
   methods: {
-    weekChanged(week) {
-      console.log('week changed',week);
-      this.$store.commit('week/saveWeek',week)
+    weekChanged() {
+      this.week = this.currentWeek
+      console.log('week changed', this.week);
+      this.$store.commit('week/saveWeek', this.week)
       this.$router.go()
     }
   },

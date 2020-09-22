@@ -69,7 +69,7 @@
             },
             stacked: false
           },
-          colors: "#FF5722",
+          colors: "#ff2400",
           dataLabels: {
             enabled: true
           },
