@@ -1,8 +1,21 @@
 <template>
-  <div class="mt-16">
-    <h2> Milestone Status (Week {{currentWeek}})</h2>
-    <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
-  </div>
+  <v-card class="ma-3">
+    <v-row justify="center" class="pa-3">
+      <h2> Milestone Status (Week {{currentWeek}})</h2>
+    </v-row>
+    <div class="loading" v-if="loading">
+      Loading...
+      <v-progress-linear
+            color="pink accent-3"
+            indeterminate
+            rounded
+            height="6"
+          ></v-progress-linear>
+    </div>
+    <div v-else>
+      <apexchart type="bar" height="400" :options="chartOptions" :series="series"></apexchart>
+    </div>
+  </v-card>
 </template>
 
 <script>
@@ -10,6 +23,7 @@ import eventService from '../eventService'
 export default {
   data() {
     return{  
+      loading: true,
       currentWeek: '',
       missed_milestone:[],
       no_of_milestone: [],
@@ -40,6 +54,7 @@ export default {
               this.projects.push(res.data[index].project);
             }
           }
+          this.loading = false;
         }
       })
     }, 2000);
@@ -64,10 +79,13 @@ export default {
 
     chartOptions: function(){
       return {
+        colors: ['#29B6F6', '#64DD17', '#d50000'],
         chart: {
           type: 'bar',
-          width: "800",
-          stacked: false
+          stacked: false,
+          toolbar: {
+            show: false
+          },
         },
         dataLabels: {
           enabled: true
@@ -77,11 +95,35 @@ export default {
           title: {
             text: "Projects",
             style: {
-              fontSize: '18px',
+              fontSize: '16px',
               margin: '12px',
+              color: '#37474F'
             }
-          }
+          },
+          labels: {
+            style: {
+              colors: "#37474F",
+              fontSize: '10px'
+            }
+          },
         },
+        yaxis: [
+            {
+              labels: {
+                style: {
+                  colors: "#37474F",
+                  fontSize: '10px'
+                }
+              },
+              title: {
+                text: "Milestone",
+                style: {
+                  fontSize: '16px',
+                  color: '#37474F'
+                }
+              },
+            }
+        ]
       }
     }
   }

@@ -63,7 +63,7 @@ export default new VueRouter({
       component: Resources
     },
     {
-      path: '/Project',
+      path: '/Project/:id',
       name: 'Project',
       component: Project
     },

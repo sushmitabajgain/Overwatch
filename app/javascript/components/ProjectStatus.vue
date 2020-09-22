@@ -1,87 +1,107 @@
 <template>
-  <div class="d-flex flex-no-wrap justify-space-between">  
-    <div>
+  <v-card class="ma-3">
+    <v-row justify="center" class="pa-3">
       <h2>Project Status (Week {{currentWeek}})</h2>
-      <apexchart width="700" type="pie" :options="chartOptions" :series="series"></apexchart>
+    </v-row>
+    <div class="loading justify-space-between" v-if="loading">
+      Loading...
+      <v-progress-linear
+            color="pink accent-3"
+            indeterminate
+            rounded
+            height="6"
+          ></v-progress-linear>
     </div>
-    <div>
-      <table id="projects">
-        <tr>
-          <th style="background-color: #00C853;">On Track </th>
-        </tr>
-        <template v-if="on_track_projects.length>0">
-          <tr v-for="project in on_track_projects" :key="project">
-            <td> {{project}}</td>
-          </tr>
-        </template>
-        <template v-else>
+    <div class="d-flex flex-no-wrap justify-space-between" v-else>
+      <div class="ma-3 ml-10">
+        <table id="projects">
           <tr>
-            <td class="project-none"> None </td>
+            <th style="background-color: #29B6F6;">On Track </th>
           </tr>
-        </template>
-      </table>
-      <table id="projects">
-        <tr>
-          <th style="background-color: #AB47BC;">Need to Discuss/Back on Track</th>
-        </tr>
-        <template v-if="discuss_projects.length>0">
-          <tr v-for="project in discuss_projects" :key="project">
-            <td> {{project}}</td>
-          </tr>
-        </template>
-        <template v-else>
+          <template v-if="on_track_projects.length>0">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}" 
+							v-for="project in on_track_projects" :key="project" exact :style="{ cursor: 'pointer'}">              
+                <td> {{project}}</td>
+            </router-link>
+          </template>
+          <template v-else>
+            <tr>
+              <td class="project-none"> None </td>
+            </tr>
+          </template>
+        </table>
+        <table id="projects">
           <tr>
-            <td class="project-none"> None </td>
+            <th style="background-color: #d50000;">Out of Deadline</th>
           </tr>
-        </template>
-      </table>
-      <table id="projects">
-        <tr>
-          <th style="background-color: #FB8C00;">Project on Halt</th>
-        </tr>
-        <template v-if="halt_projects.length>0">
-          <tr v-for="project in halt_projects" :key="project">
-            <td> {{project}}</td>
-          </tr>
-        </template>
-        <template v-else>
+          <template v-if="deadline_projects.length>0">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in deadline_projects" :key="project" exact :style="{ cursor: 'pointer'}">
+              <td> {{project}}</td>
+            </router-link>
+          </template>
+          <template v-else>
+            <tr>
+              <td class="project-none"> None </td>
+            </tr>
+          </template>
+        </table>
+      </div>
+      <div>
+        <apexchart type="pie" width="550" :options="chartOptions" :series="series"></apexchart>
+      </div>
+      <div class="ma-3 mr-10">
+        <table id="projects">
           <tr>
-            <td class="project-none"> None </td>
+            <th style="background-color: #FFEA00;">Project on Halt</th>
           </tr>
-        </template>
-      </table>
-      <table id="projects">
-        <tr>
-          <th style="background-color: #E53935;">Out of Deadline</th>
-        </tr>
-        <template v-if="deadline_projects.length>0">
-          <tr v-for="project in deadline_projects" :key="project">
-            <td> {{project}}</td>
-          </tr>
-        </template>
-        <template v-else>
+          <template v-if="halt_projects.length>0">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in halt_projects" :key="project" exact :style="{ cursor: 'pointer'}">
+              <td> {{project}}</td>
+            </router-link>
+          </template>
+          <template v-else>
+            <tr>
+              <td class="project-none"> None </td>
+            </tr>
+          </template>
+        </table>
+        <table id="projects">
           <tr>
-            <td class="project-none"> None </td>
+            <th style="background-color: #64DD17;">Completed Projects</th>
           </tr>
-        </template>
-      </table>
-      <table id="projects">
-        <tr>
-          <th style="background-color: #1E88E5;">Completed Projects</th>
-        </tr>
-        <template v-if="completed_projects.length>0">
-          <tr v-for="project in completed_projects" :key="project">
-            <td> {{project}}</td>
-          </tr>
-        </template>
-        <template v-else>
+          <template v-if="completed_projects.length>0">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in completed_projects" :key="project" exact :style="{ cursor: 'pointer'}">
+              <td> {{project}}</td>
+            </router-link>
+          </template>
+          <template v-else>
+            <tr>
+              <td class="project-none"> None </td>
+            </tr>
+          </template>
+        </table>
+        <table id="projects">
           <tr>
-            <td class="project-none"> None </td>
+            <th style="background-color: #D500F9;">Need to Discuss/Back on Track</th>
           </tr>
-        </template>
-      </table>
+          <template v-if="discuss_projects.length>0">
+            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
+              v-for="project in discuss_projects" :key="project" exact :style="{ cursor: 'pointer'}">
+              <td> {{project}}</td>
+            </router-link>
+          </template>
+          <template v-else>
+            <tr>
+              <td class="project-none"> None </td>
+            </tr>
+          </template>
+        </table>
+      </div>
     </div>
-  </div>
+  </v-card>
 </template>
 
 
@@ -91,6 +111,7 @@
     data() {
       return{
         currentWeek: '',
+        loading: true,
         on_track_projects: [],
         discuss_projects:[],
         halt_projects:[],
@@ -101,7 +122,7 @@
             width: 500,
             type: 'pie',
           },
-          colors: ['#00C853','#AB47BC', '#FB8C00', '#E53935', '#1E88E5'],
+          colors: ['#29B6F6','#D500F9', '#FFEA00', '#d50000', '#64DD17'],
           labels: [
                     ['On Track'],
                     ['Need to Discuss/Back on Track'],
@@ -119,7 +140,7 @@
                 position: 'bottom'
               }
             }
-          }]
+          }],
         }
       }
     },        
@@ -149,6 +170,7 @@
                 this.completed_projects.push(res.data[index].project);
               }
             }
+            this.loading = false;
           }
         })
       }, 2000);
@@ -176,12 +198,14 @@
 
 #projects td, #projects th {
   border: 1px solid #ddd;
-  padding: 4px;
+  background-color: #f2f2f2;
+  padding: 5px;
+  font-size: 12px;
 }
 
 #projects th {
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   text-align: left;
   color: white;
 }
@@ -189,5 +213,9 @@
 #projects 
 .project-none {
   background-color: #f2f2f2;
+}
+
+.apexcharts-legend-series{
+  margin: 0 !important;
 }
 </style>
