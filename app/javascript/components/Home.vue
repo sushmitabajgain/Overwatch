@@ -4,9 +4,6 @@
   <Dashboard />
     <v-container class="blue lighten-5 mt-15" fluid>
       <v-row no-gutters>
-        <v-col cols="12">
-          <Week />
-        </v-col>
         <v-col cols="3">
           <Benched />
         </v-col>
@@ -46,13 +43,11 @@
   import Dashboard from './Dashboard'
   import Benched from './Home/Benched'
   import TotalProject from './Home/TotalProject'
-  import Week from './Week'
   export default {
     components:{
       NavHeader,
       ProjectStatus,
       Milestone,
-      Week,
       NumberOfResources,
       ProjectVsName,
       Dashboard,

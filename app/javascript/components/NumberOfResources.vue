@@ -25,7 +25,6 @@
     data() {
       return{
         loading: true,
-        currentWeek: '',
         data: [],
         chartOptions: {
           chart: {
@@ -74,10 +73,11 @@
         },
       }
     },
-    created(){
-      setTimeout(() => {
-        this.currentWeek = localStorage.getItem('week');
-        eventService.project.getWeeklyProject(this.currentWeek) 
+    methods: {
+      getWeekly(week){
+        this.data = [],
+        this.chartOptions.labels = []
+        eventService.project.getWeeklyProject(week) 
         .then(res => {
           if(res.status == 200){
             var count =0;
@@ -92,9 +92,16 @@
             this.loading = false;
           } 
         })
-      }, 2000);    
+      }
     },
     computed: {
+      currentWeek(){
+        let week = this.$store.state.week.week;
+        if (week){
+          this.getWeekly(week)
+        }
+        return week;
+      },
       series: function() {
         return [
           {

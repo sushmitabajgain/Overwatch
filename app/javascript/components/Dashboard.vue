@@ -2,8 +2,8 @@
       <v-navigation-drawer
         app
         floating
-        color="#041037"
-        width="230px"
+        color="#fff"
+        width="75px"
       >
         <v-list
           dense

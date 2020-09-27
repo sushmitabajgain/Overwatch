@@ -2,6 +2,8 @@
 <v-app-bar absolute color="white">
     <v-spacer></v-spacer>
     <SearchBar />
+  <v-spacer></v-spacer>
+    <Week />
     <v-spacer></v-spacer>
   <v-menu v-if="isAuth">
     <template v-slot:activator="{ on, attrs }">
@@ -12,12 +14,15 @@
         v-on="on"
         class="text"
       >
-      <p class="pt-3">
-        <v-avatar size="36">
-          <img :src="image" alt="" class="rounded-circle profile_image">
+      <v-row>
+        <p class="pa-2"> Hi! {{username}} </p>
+        <v-avatar tile size="40" class="mt-2">
+          <img :src="image" alt="" style="border-radius:10px">
         </v-avatar>
-          Hi! {{username}}
-      </p>
+          <span class="material-icons ma-2">
+            arrow_drop_down
+          </span>
+      </v-row>
       </label>
     </template>
 
@@ -37,9 +42,11 @@
 
   import eventService from '../../eventService'
   import SearchBar from './SearchBar'
+  import Week from '../Week'
   export default {
     components:{
-      SearchBar
+      SearchBar,
+      Week
     },
     data(){
       return {
@@ -85,5 +92,9 @@
   .mt-20{
 	  margin-top: 45px;
 	}
+
+  // .menu{
+  //   top: 0px !important;
+  // }
 
 </style>
