@@ -41,7 +41,9 @@ export default {
         var index;
         for(index in res.data)
           if(res.data.length>0){
-            this.projects.push(res.data[index].project);
+            if (res.data[index].project !== "Benched"){
+              this.projects.push(res.data[index].project);
+            }
           }
       }
     })

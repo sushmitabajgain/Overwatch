@@ -25,7 +25,6 @@ export default {
     return{
       currentWeek: '',
       date:[],
-      week: '',
     }
   },
   created(){
@@ -40,10 +39,8 @@ export default {
   },
   methods: {
     weekChanged() {
-      this.week = this.currentWeek
-      console.log('week changed', this.week);
-      this.$store.commit('week/saveWeek', this.week)
-      // this.$router.go()
+      let week = this.currentWeek
+      this.$store.commit('week/saveWeek', week)
     }
   },
 }

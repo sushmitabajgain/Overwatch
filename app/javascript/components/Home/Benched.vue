@@ -1,6 +1,7 @@
 <template>
   <v-card class="ma-3" color="orange lighten-5" justify="center">
     <v-card-title>Benched Resources</v-card-title>
+    <v-input style="display:none"> {{currentWeek}}</v-input>
     <div class="text-center" style="height: 150px;">
       <v-progress-circular
         :rotate="360"
@@ -23,10 +24,10 @@ export default {
       loading: true
     }
   },
-    created(){
-      setTimeout(() => {
-        this.currentWeek = localStorage.getItem('week');
-        eventService.project.getWeeklyProject(this.currentWeek) 
+  methods: {
+    getWeeklyBenched(week){
+      this.benched= [],
+        eventService.project.getWeeklyProject(week) 
         .then(res => {
           if(res.status == 200){
           var count =0;
@@ -35,14 +36,22 @@ export default {
             if(res.data.length>0){
               if (res.data[index].project == "Benched"){
                 this.benched.push(res.data[index].no_of_resources);
+                console.log(res.data[index].project == "Benched")
               }
             }
             this.loading = false;
           }
         })
-      }, 2000);
+      },
     },
     computed: {
+      currentWeek(){
+        let week = this.$store.state.week.week;
+        if (week){
+          this.getWeeklyBenched(week)
+        }
+        return week;
+      },
       value: function() {
         return this.benched.join('')
       },
