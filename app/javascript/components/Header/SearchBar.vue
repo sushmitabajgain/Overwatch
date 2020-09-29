@@ -10,11 +10,15 @@
             solo
             hide-no-data
             hide-selected
-            style="width: 400px;"
-            placeholder="Start typing to Search"
+            style="width: 350px; border-radius:15px"
+            label="Start typing to Search"
           >
+            <template v-slot:append>
+              <v-btn icon type="submit">
+                <v-icon>search</v-icon> 
+              </v-btn>
+            </template>
           </v-autocomplete>
-      <v-btn icon type="submit" class="pa-2"> <v-icon>search</v-icon> </v-btn>
       </v-row>
     </v-form>
 </template>
@@ -37,7 +41,9 @@ export default {
         var index;
         for(index in res.data)
           if(res.data.length>0){
-            this.projects.push(res.data[index].project);
+            if (res.data[index].project !== "Benched"){
+              this.projects.push(res.data[index].project);
+            }
           }
       }
     })

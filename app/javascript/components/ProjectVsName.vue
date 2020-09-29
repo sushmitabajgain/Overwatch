@@ -27,15 +27,15 @@
     data() {
       return{
         loading: true,
-        currentWeek: '',
         multiple_resource: [],
         name: [],
       }
     },
-    created(){
-      setTimeout(() => {
-        this.currentWeek = localStorage.getItem('week');
-        eventService.project.getWeeklyResource(this.currentWeek) 
+    methods: {
+      getWeekly(week){
+        this.multiple_resource= [],
+        this.name= [],
+        eventService.project.getWeeklyResource(week) 
         .then(res => {
           if(res.status == 200){
           var count =0;
@@ -48,9 +48,16 @@
             this.loading = false;
           }
         })
-      }, 2000);
+      }
     },
     computed: {
+      currentWeek(){
+        let week = this.$store.state.week.week;
+        if (week){
+          this.getWeekly(week)
+        }
+        return week;
+      },
       series: function() {
         return [
           {

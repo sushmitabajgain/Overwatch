@@ -1,6 +1,7 @@
 <template>
   <v-card class="ma-3" color="pink lighten-5" justify="center">
     <v-card-title>Total Project</v-card-title>
+    <v-input style="display:none"> {{currentWeek}}</v-input>
     <div class="text-center" style="height: 150px;">
       <v-progress-circular
         :rotate="360"
@@ -15,18 +16,18 @@
   </v-card>
 </template>
 <script>
-import eventService from '../../eventService'
-export default {
-  data(){
-    return{
-      benched: [],
-      loading: true
-    }
-  },
-    created(){
-      setTimeout(() => {
-        this.currentWeek = localStorage.getItem('week');
-        eventService.project.getWeeklyProject(this.currentWeek) 
+  import eventService from '../../eventService'
+  export default {
+    data(){
+      return{
+        project: [],
+        loading: true
+      }
+    },
+    methods: {
+      getWeeklyBenched(week){
+        this.project= [],
+        eventService.project.getWeeklyProject(week) 
         .then(res => {
           if(res.status == 200){
           var count =0;
@@ -34,17 +35,24 @@ export default {
           for(index in res.data)
             if(res.data.length>0){
               if (res.data[index].project !== "Benched"){
-                this.benched.push(res.data[index].project);
+                this.project.push(res.data[index].project);
               }
             }
             this.loading = false;
           }
         })
-      }, 2000);
+      }
     },
     computed: {
+      currentWeek(){
+        let week = this.$store.state.week.week;
+        if (week){
+          this.getWeeklyBenched(week)
+        }
+        return week;
+      },
       value: function() {
-        return this.benched.length
+        return this.project.length
       },
     }
 }

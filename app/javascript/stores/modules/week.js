@@ -1,11 +1,11 @@
 const week={
 	namespaced: true,
 	state: {
-		week :{},
+		week : "",
 	},
   mutations:{
     saveWeek: (state, week) => {
-        localStorage.setItem('week',week)
+      state.week = week;
     },
   },
 }

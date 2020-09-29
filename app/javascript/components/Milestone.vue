@@ -24,17 +24,20 @@ export default {
   data() {
     return{  
       loading: true,
-      currentWeek: '',
       missed_milestone:[],
       no_of_milestone: [],
       completed_milestone: [],
       projects: [],
     }
   },
-  created(){
-    setTimeout(() => {
-      this.currentWeek = localStorage.getItem('week');
-      eventService.project.getWeeklyProject(this.currentWeek) 
+
+  methods: {
+    getWeeklyMilestone(week){
+      this.missed_milestone = [],
+      this.no_of_milestone = [],
+      this.completed_milestone = [],
+      this.projects = [],
+      eventService.project.getWeeklyProject(week) 
       .then(res => {
         if(res.status == 200){
         var count =0;
@@ -57,9 +60,17 @@ export default {
           this.loading = false;
         }
       })
-    }, 2000);
+    }
   },
+
   computed: {
+    currentWeek(){
+      let week = this.$store.state.week.week;
+      if (week){
+        this.getWeeklyMilestone(week)
+      }
+      return week;
+    },
     series: function() {
       return [
         {

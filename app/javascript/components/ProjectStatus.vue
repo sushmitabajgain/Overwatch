@@ -110,7 +110,6 @@
   export default {
     data() {
       return{
-        currentWeek: '',
         loading: true,
         on_track_projects: [],
         discuss_projects:[],
@@ -144,10 +143,14 @@
         }
       }
     },        
-    created(){
-      setTimeout(() => {
-        this.currentWeek = localStorage.getItem('week');
-        eventService.project.getWeeklyProject(this.currentWeek) 
+    methods: {
+      getWeekly(week){
+        this.on_track_projects= [],
+        this.discuss_projects=[],
+        this.halt_projects=[],
+        this.deadline_projects=[],
+        this.completed_projects=[],
+        eventService.project.getWeeklyProject(week) 
         .then(res => {
           if(res.status == 200){
           var count =0;
@@ -173,9 +176,16 @@
             this.loading = false;
           }
         })
-      }, 2000);
+      }
     },
     computed: {
+      currentWeek(){
+        let week = this.$store.state.week.week;
+        if (week){
+          this.getWeekly(week)
+        }
+        return week;
+      },
       series: function(){
         return  [
                   this.on_track_projects.length,
