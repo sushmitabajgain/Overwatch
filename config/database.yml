@@ -14,3 +14,7 @@ staging:
 test:
   <<: *default
   url: <%= ENV['POSTGRES_URL_TEST']%>
+
+production:
+  <<: *default
+  url: <%= ENV['POSTGRES_URL_PRODUCTION']%>
