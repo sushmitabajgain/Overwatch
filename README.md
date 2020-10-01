@@ -1,24 +1,39 @@
-# README
+# OverWatch 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+### Requirements
 
-* Ruby version
+* UNIX based Operation System
+* rbenv
+* Ruby 2.6.5 and up
+* Bundler 2.1.4
+* Rails 6.0.3.3
+* Nodejs 12.18.3 and up
+* Yarn 1.22.5 and up
+* Postgresql 10 and up
 
-* System dependencies
+## Developing
+```shell
+git clone git@git.gurzu.net:Sushmita/Overwatch.git
+cd Overwatch
+bundle install
+yarn install
+bundle exec rake db:create db:migrate
+foreman start
+whenever --update-crontab
+```
 
-* Configuration
+In browser of choice, visit localhost:3000.
 
-* Database creation
+To stop the process, press `ctrl+c`.
 
-* Database initialization
+## Building
 
-* How to run the test suite
+This project is based on **Rails**. Directory structure is standard rails app directory.
+For the frontend, **Vuejs** is used. The entry point `application.js` resides on `app/javascript/packs/`.
+Necessary components are defined in `app/javascript/components/`.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Copyright
 
-* Deployment instructions
-
-* ...
+All rights reserved to Gurzu. Inc.
