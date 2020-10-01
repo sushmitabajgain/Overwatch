@@ -11,9 +11,11 @@
           class="py-0"
         >
           <v-list-item>
-            <v-list-item-avatar>
-              <img src="../images/pm.png" >
-            </v-list-item-avatar>
+            <router-link to="/">
+              <v-list-item-avatar>
+                <img src="../images/pm.png" >
+              </v-list-item-avatar>
+            </router-link>
 
             <v-list-item-content class="white--text font-weight-bold">
               <h4>Eagle Eye</h4>

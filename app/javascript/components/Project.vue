@@ -1,10 +1,12 @@
 <template>
   <div>
-    <v-container class="fill-height" fluid>
+  <NavHeader />
+  <Dashboard />
+  <v-container class="blue lighten-5 fill-height" fluid>
       <v-row align="center" justify=center>
         <v-col cols="6" sm="4" md="6">
-          <v-card elevation="12">
-            <v-window class="mt-8">
+          <v-card>
+            <v-window class="">
                 <v-row>
                   <v-col cols="12">
                     <v-card-text>
@@ -14,20 +16,20 @@
                           <p> {{ project.project }} </p>
                         </v-row>
                         <v-row>
-                          <h3> Status: </h3>
-                          <p> {{ project.status }} </p>
+                          <h3> Project Health: </h3>
+                          <p> {{ project.project_health }} </p>
                         </v-row>
                         <v-row>
-                          <h3> Start Date: </h3>
-                          <p> {{ project.start_date }} </p>
+                          <h3> Project Timeline: </h3>
+                          <p> {{ project.project_timeline }} </p>
                         </v-row>
                         <v-row>
-                          <h3> End Date: </h3>
-                          <p> {{ project.end_date }} </p>
+                          <h3> Project Workload: </h3>
+                          <p> {{ project.workload }} </p>
                         </v-row>
                         <v-row>
-                          <h3> Notes: </h3>
-                          <p> {{ project.notes }} </p>
+                          <h3> Project Milestone: </h3>
+                          <p> {{ project.project_milestone }} </p>
                         </v-row>
                       </v-col>
                     </v-card-text>
@@ -42,13 +44,13 @@
 </template>
 
 <script>
-  import Auth from './Header/Auth'
-  import HeaderTopLeft from './Header/HeaderTopLeft'
+  import NavHeader from './Header/NavHeader'
+  import Dashboard from './Dashboard'
   import eventService from '../eventService'
   export default {
     components: {
-      Auth,
-      HeaderTopLeft
+      NavHeader,
+      Dashboard
     },
     data(){
       return{
@@ -70,3 +72,11 @@
     },
   }
 </script>
+<style lang="scss" scoped>
+.fill-height{
+  height: 100vh;
+}
+p{
+  padding: 2px;
+}
+</style>

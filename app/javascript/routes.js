@@ -5,7 +5,7 @@ import SignUp from './components/SignUp'
 import ForgetPassword from './components/ForgetPassword'
 import MyProfile from './components/MyProfile'
 import ChangePassword from './components/ChangePassword'
-import Home from './components/Home'
+import HomePage from './components/HomePage'
 import Resources from './components/Resources'
 import Project from './components/Project'
 
@@ -28,7 +28,7 @@ export default new VueRouter({
     {
       path: '/',
       name:'root-path',
-      component: Home
+      component: HomePage
     },
     { 
       path: '/SignIn',

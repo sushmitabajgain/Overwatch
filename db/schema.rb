@@ -10,23 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_063801) do
+ActiveRecord::Schema.define(version: 2020_09_30_103731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
-    t.integer "sn"
-    t.string "status"
     t.string "project"
-    t.string "start_date"
-    t.string "end_date"
-    t.string "extended_date"
+    t.string "project_health"
+    t.string "project_timeline"
+    t.string "workload"
+    t.integer "pending_raid"
+    t.text "milestone_status"
     t.text "notes"
-    t.integer "no_of_resources"
-    t.string "no_of_milestone"
-    t.string "completed_milestone"
-    t.string "missed_milestone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "week_id"
@@ -34,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_09_16_063801) do
   end
 
   create_table "resources", force: :cascade do |t|
-    t.integer "multiple"
-    t.string "name"
+    t.string "project"
+    t.string "no_of_resources"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "week_id"
@@ -71,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_063801) do
   end
 
   create_table "weeks", force: :cascade do |t|
-    t.integer "week"
+    t.string "week"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

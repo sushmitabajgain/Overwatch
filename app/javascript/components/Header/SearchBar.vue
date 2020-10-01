@@ -3,7 +3,6 @@
       <v-row>
           <v-autocomplete
             v-model="select"
-            :loading="isLoading"
             :items="projects" item-value="id" item-text="name"
             hide-details
             single-line
@@ -30,7 +29,6 @@ export default {
     return{
       select: '',
       projects: [],
-      isLoading: false,
     }
   },
   created(){
@@ -41,9 +39,7 @@ export default {
         var index;
         for(index in res.data)
           if(res.data.length>0){
-            if (res.data[index].project !== "Benched"){
-              this.projects.push(res.data[index].project);
-            }
+            this.projects.push(res.data[index].project);
           }
       }
     })

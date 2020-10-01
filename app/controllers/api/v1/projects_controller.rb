@@ -14,6 +14,27 @@ module Api
         render json: projects, status: :ok
       end
 
+      # def worksheet
+      #   @session = GoogleDrive::Session.from_config("client_secret.json")
+      #   @spreedsheet ||= @session.spreadsheet_by_title("Eagle Eye")
+      #   @worksheet ||= @spreedsheet.worksheets.second
+      #   @projects = @worksheet.rows
+      #   # x = 1
+      #   @projects.each do |i|
+      #       p i
+      #   #     # project = i[0]
+      #   #     # project_health = i[1]
+      #   #     # project_timeline = i[2]
+      #   #     # workload = i[3]
+      #   #     # pending_raid = i[4]
+      #   #     # milestone_status = i[5]
+      #   #     # notes = i[6]
+      #   #     # x += 1
+      #   end
+      #   # @pro = @listing.rows
+      #   render json: @projects, status: :ok
+      # end
+
       private
 
       def get_week
@@ -21,8 +42,8 @@ module Api
       end
       
       def project_params
-        params.permit(:sn, :status, :project, :start_date, :end_date, :extended_date, :notes, :week_id,
-                       :no_of_resources, :no_of_milestone, :completed_milestone, :missed_milestone)
+        params.permit(:project, :project_health, :project_timeline, :workload,
+          :week, :pending_raid, :milestone_status, :notes)
       end
     end
   end

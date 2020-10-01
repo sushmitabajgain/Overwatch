@@ -1,6 +1,8 @@
 <template>
   <v-card class="ma-3" color="pink lighten-5" justify="center">
-    <v-card-title>Total Project</v-card-title>
+    <v-row justify="center">
+      <v-card-title>Total Project</v-card-title>
+    </v-row>
     <v-input style="display:none"> {{currentWeek}}</v-input>
     <div class="text-center" style="height: 150px;">
       <v-progress-circular

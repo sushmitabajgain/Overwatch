@@ -1,7 +1,7 @@
 <template>
   <v-card class="ma-3">
     <v-row justify="center" class="pa-3">
-      <h2>Project Timeline (Week {{currentWeek}})</h2>
+      <h2>Project Health (Week {{currentWeek}})</h2>
     </v-row>
     <div class="loading justify-space-between" v-if="loading">
       Loading...
@@ -13,60 +13,8 @@
           ></v-progress-linear>
     </div>
     <div class="d-flex flex-no-wrap justify-space-between" v-else>
-      <div class="ma-3 ml-10">
-        <table id="projects">
-          <tr>
-            <th style="background-color: #76EE00;">On Track </th>
-          </tr>
-          <template v-if="on_track_projects.length>0">
-            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}" 
-							v-for="project in on_track_projects" :key="project" exact :style="{ cursor: 'pointer'}">              
-                <td> {{project}}</td>
-            </router-link>
-          </template>
-          <template v-else>
-            <tr>
-              <td class="project-none"> None </td>
-            </tr>
-          </template>
-        </table>
-      </div>
       <div>
-        <apexchart type="pie" width="450" :options="chartOptions" :series="series"></apexchart>
-      </div>
-      <div class="ma-3 mr-10">
-       <table id="projects">
-          <tr>
-            <th style="background-color: #d50000;">Due</th>
-          </tr>
-          <template v-if="due_projects.length>0">
-            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
-              v-for="project in due_projects" :key="project" exact :style="{ cursor: 'pointer'}">
-              <td> {{project}}</td>
-            </router-link>
-          </template>
-          <template v-else>
-            <tr>
-              <td class="project-none"> None </td>
-            </tr>
-          </template>
-        </table>
-         <table id="projects">
-          <tr>
-            <th style="background-color: #FFEA00;">Ahead Schedule</th>
-          </tr>
-          <template v-if="ahead_schedule.length>0">
-            <router-link tag="tr" :to="{name:'Project', params:{id: project.id}}"
-              v-for="project in ahead_schedule" :key="project" exact :style="{ cursor: 'pointer'}">
-              <td> {{project}}</td>
-            </router-link>
-          </template>
-          <template v-else>
-            <tr>
-              <td class="project-none"> None </td>
-            </tr>
-          </template>
-        </table>
+        <apexchart type="donut" width="400" :options="chartOptions" :series="series"></apexchart>
       </div>
     </div>
   </v-card>
@@ -74,7 +22,7 @@
 
 
 <script>
-  import eventService from '../eventService'
+  import eventService from '../../eventService'
   export default {
     data() {
       return{
@@ -83,16 +31,30 @@
         ahead_schedule:[],
         due_projects:[],
         chartOptions: {
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  show: true,
+                  total: {
+                    show: true,
+                    label: 'Total',
+                  }
+                }
+              }
+            }
+          },
           chart: {
             width: 500,
             type: 'pie',
           },
-          colors: ['#76EE00','#d50000','#FFEA00'],
+          colors: ['#FFEA00', '#d50000', '#64DD17'],
           labels: [
-                    ['On track'],
-                    ['Due'],
-                    ['Ahead Schedule']
+                    ['Good'],
+                    ['Needs CheckUp'],
+                    ['Bad']
                   ],
+          formatter: () => 'Text you want',
           responsive: [{
             breakpoint: 480,
             options: {
@@ -119,13 +81,13 @@
           var index;
           for(index in res.data)
             if(res.data.length>0){
-              if (res.data[index].project_timeline == "On track"){
+              if (res.data[index].project_health == "Good"){
                 this.on_track_projects.push(res.data[index].project);
               }
-              if (res.data[index].project_timeline == "Ahead Schedule"){
+              if (res.data[index].project_health == "Needs CheckUp"){
                 this.ahead_schedule.push(res.data[index].project);
               }
-              if (res.data[index].project_timeline == "Due"){
+              if (res.data[index].project_health == "Bad"){
                 this.due_projects.push(res.data[index].project);
               }
             }

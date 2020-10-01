@@ -1,5 +1,4 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :sn, :status, :project, :start_date, :end_date, :extended_date,
-             :notes, :week, :no_of_resources, :no_of_milestone,
-             :completed_milestone, :missed_milestone
+  attributes :id, :project, :project_health, :project_timeline, :workload,
+          :week_id, :pending_raid, :milestone_status, :notes
 end

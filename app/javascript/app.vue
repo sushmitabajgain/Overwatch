@@ -34,7 +34,7 @@ export default {
     content: '|';
     font-size: 16px;
     font-weight: 300;
-    font-family: Raleway;
+    font-family: Roboto,sans-serif;
     padding-right: 5px;
     position: relative;
     top: -3px;

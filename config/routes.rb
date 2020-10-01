@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get 'projects', :to => 'projects#projects'
       get 'resources', :to => 'resources#resources'
       get 'search', :to=> 'search#index'
-
+      get 'worksheet', :to=> 'projects#worksheet'
     end
   end
 
