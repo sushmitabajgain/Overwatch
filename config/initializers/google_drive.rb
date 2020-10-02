@@ -10,5 +10,3 @@ file = {
 }
 
 File.open('google_credentials.json', 'w') { |w| w.write file.to_json }
-content = File.read('google_credentials.json').gsub('=>', ':')
-File.open('google_credentials.json', 'w') { |w| w.write content }
