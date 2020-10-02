@@ -1,11 +1,44 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Week.create!([
+  {week: "2020-10-02 20:53:07 +0545"},
+  {week: "2020-10-02 20:54:06 +0545"},
+  {week: "2020-10-02 20:58:06 +0545"}
+])
 
-Dir[File.join(Rails.root, 'db', 'seeds/**', '*.rb')].sort.each do |seed|
-  load seed
-end
+Project.create!([
+  {project: "Spectrapass", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "MIlesone 3 Completed, New SOC in progress ", notes: "", week_id: 1},
+  {project: "Almond", project_health: "Good", project_timeline: "On Halt", workload: "Relaxed", pending_raid: 1, milestone_status: "hold on milestone 2", notes: "*CMS complete", week_id: 1},
+  {project: "Project Iron", project_health: "Good", project_timeline: "On track", workload: "Stretched", pending_raid: nil, milestone_status: "Milesone 1 completed", notes: "", week_id: 1},
+  {project: "ISM Publish", project_health: "Good", project_timeline: "On track", workload: "Stretched", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 1},
+  {project: "BoldCode", project_health: "Good", project_timeline: "On track", workload: "Relaxed", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 1},
+  {project: "Flagship", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 1},
+  {project: "Biggerpockets", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 1},
+  {project: "Receptionist Server", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 1},
+  {project: "Receptionist", project_health: "Good", project_timeline: "On track", workload: "Relaxed", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 1},
+  {project: "Designerex", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: 1, milestone_status: "Task is on progress", notes: "", week_id: 1},
+  {project: "ISM AD Tank", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "Task is on progress", notes: "", week_id: 1},
+  {project: "ISM SSP", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "Task is on progress", notes: "", week_id: 1},
+  {project: "Spectrapass", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "MIlesone 3 Completed, New SOC in progress ", notes: "", week_id: 2},
+  {project: "Almond", project_health: "Good", project_timeline: "On Halt", workload: "Relaxed", pending_raid: 1, milestone_status: "hold on milestone 2", notes: "*CMS complete", week_id: 2},
+  {project: "Project Iron", project_health: "Good", project_timeline: "On track", workload: "Stretched", pending_raid: nil, milestone_status: "Milesone 1 completed", notes: "", week_id: 2},
+  {project: "ISM Publish", project_health: "Good", project_timeline: "On track", workload: "Stretched", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 2},
+  {project: "BoldCode", project_health: "Good", project_timeline: "On track", workload: "Relaxed", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 2},
+  {project: "Flagship", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 2},
+  {project: "Biggerpockets", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 2},
+  {project: "Receptionist Server", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 2},
+  {project: "Receptionist", project_health: "Good", project_timeline: "On track", workload: "Relaxed", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 2},
+  {project: "Designerex", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: 1, milestone_status: "Task is on progress", notes: "", week_id: 2},
+  {project: "ISM AD Tank", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "Task is on progress", notes: "", week_id: 2},
+  {project: "ISM SSP", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "Task is on progress", notes: "", week_id: 2},
+  {project: "Spectrapass", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "MIlesone 3 Completed, New SOC in progress ", notes: "", week_id: 3},
+  {project: "Almond", project_health: "Good", project_timeline: "On Halt", workload: "Relaxed", pending_raid: 1, milestone_status: "hold on milestone 2", notes: "*CMS complete", week_id: 3},
+  {project: "Project Iron", project_health: "Good", project_timeline: "On track", workload: "Stretched", pending_raid: nil, milestone_status: "Milesone 1 completed", notes: "", week_id: 3},
+  {project: "ISM Publish", project_health: "Good", project_timeline: "On track", workload: "Stretched", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 3},
+  {project: "BoldCode", project_health: "Good", project_timeline: "On track", workload: "Relaxed", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 3},
+  {project: "Flagship", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 3},
+  {project: "Biggerpockets", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 3},
+  {project: "Receptionist Server", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 3},
+  {project: "Receptionist", project_health: "Good", project_timeline: "On track", workload: "Relaxed", pending_raid: nil, milestone_status: "N/A", notes: "", week_id: 3},
+  {project: "Designerex", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: 1, milestone_status: "Task is on progress", notes: "", week_id: 3},
+  {project: "ISM AD Tank", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "Task is on progress", notes: "", week_id: 3},
+  {project: "ISM SSP", project_health: "Good", project_timeline: "On track", workload: "Normal", pending_raid: nil, milestone_status: "Task is on progress", notes: "", week_id: 3}
+])
