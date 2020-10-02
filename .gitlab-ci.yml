@@ -1,0 +1,20 @@
+stages:
+  - build
+  - push
+    #  - deploy
+
+
+build:
+  stage: build
+  only: 
+    - develop
+  script:
+    - docker build -t docker.gurzu.net/gurzu/overwatch:latest .
+
+push:
+  stage: push
+  only:
+    - develop
+  script:
+    - docker push docker.gurzu.net/gurzu/overwatch:latest
+
