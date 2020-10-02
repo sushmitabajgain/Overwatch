@@ -15,9 +15,9 @@ module Api
       end
 
       # def worksheet
-      #   @session = GoogleDrive::Session.from_config("client_secret.json")
+      #   @session = GoogleDrive::Session.from_config('google_credentials.json')
       #   @spreedsheet ||= @session.spreadsheet_by_title("Eagle Eye")
-      #   @worksheet ||= @spreedsheet.worksheets.second
+      #   @worksheet ||= @spreedsheet.worksheets.first
       #   @projects = @worksheet.rows
       #   # x = 1
       #   @projects.each do |i|
