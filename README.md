@@ -15,7 +15,7 @@
 
 ## Developing
 ```shell
-git clone git@git.gurzu.net:Sushmita/Overwatch.git
+git clone git@git.gurzu.net:gurzu/Overwatch.git
 cd Overwatch
 bundle install
 yarn install
