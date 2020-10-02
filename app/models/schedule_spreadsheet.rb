@@ -1,6 +1,6 @@
 class ScheduleSpreadsheet < ApplicationRecord
   def self.get_worksheet
-    @session = GoogleDrive::Session.from_config("client_secret.json")
+    @session = GoogleDrive::Session.from_config('google_credentials.json')
     @spreedsheet ||= @session.spreadsheet_by_title("Eagle Eye")
     @worksheet ||= @spreedsheet.worksheets.first
     @projects = (@worksheet.rows - [@worksheet.rows.first] - [@worksheet.rows.second])
