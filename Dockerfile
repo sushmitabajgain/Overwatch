@@ -20,6 +20,7 @@ ENV SECRET_KEY_BASE e622e65737f224deeb1b43ffe4ac2cb49c7b1142c58b711bc9a9f91c12de
 RUN bin/webpack
 
 ENV RAILS_ENV production
+ENV NODE_ENV production
 RUN RAILS_ENV=production bundle exec rake assets:precompile
 RUN RAILS_ENV=production bundle exec rails webpacker:install
 
