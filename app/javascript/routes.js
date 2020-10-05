@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
-import ForgetPassword from './components/ForgetPassword'
-import MyProfile from './components/MyProfile'
-import ChangePassword from './components/ChangePassword'
+// import SignIn from './components/SignIn'
+// import SignUp from './components/SignUp'
+// import ForgetPassword from './components/ForgetPassword'
+// import MyProfile from './components/MyProfile'
+// import ChangePassword from './components/ChangePassword'
 import HomePage from './components/HomePage'
 import Resources from './components/Resources'
 import Project from './components/Project'
@@ -30,33 +30,33 @@ export default new VueRouter({
       name:'root-path',
       component: HomePage
     },
-    { 
-      path: '/SignIn',
-      name:'SignIn',
-      component: SignIn
-    },
-    { 
-      path: '/SignUp',
-      name:'SignUp',
-      component: SignUp
-    },
-    { 
-      path: '/ForgetPassword',
-      name:'ForgetPassword',
-      component: ForgetPassword
-    },
-    {
-      path: '/MyProfile',
-      name: 'MyProfile',
-      component: MyProfile,
-      beforeEnter: requireAuthenticated
-    },
-    {
-      path: '/ChangePassword',
-      name: 'ChangePassword',
-      component: ChangePassword,
-      beforeEnter: requireAuthenticated
-    },
+    // { 
+    //   path: '/SignIn',
+    //   name:'SignIn',
+    //   component: SignIn
+    // },
+    // { 
+    //   path: '/SignUp',
+    //   name:'SignUp',
+    //   component: SignUp
+    // },
+    // { 
+    //   path: '/ForgetPassword',
+    //   name:'ForgetPassword',
+    //   component: ForgetPassword
+    // },
+    // {
+    //   path: '/MyProfile',
+    //   name: 'MyProfile',
+    //   component: MyProfile,
+    //   beforeEnter: requireAuthenticated
+    // },
+    // {
+    //   path: '/ChangePassword',
+    //   name: 'ChangePassword',
+    //   component: ChangePassword,
+    //   beforeEnter: requireAuthenticated
+    // },
     {
       path: '/Resources',
       name: 'Resources',
