@@ -22,6 +22,7 @@ RUN bin/webpack
 ENV RAILS_ENV production
 RUN RAILS_ENV=production bundle exec rake assets:precompile
 RUN RAILS_ENV=production bundle exec rails webpacker:install
+RUN RAILS_ENV=production bundle exec rails webpacker:compile
 
 EXPOSE 3000
 
