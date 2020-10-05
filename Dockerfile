@@ -24,7 +24,6 @@ RUN yarn install --check-files
 
 COPY . ./
 
-RUN yarn build
 ENV SECRET_KEY_BASE e622e65737f224deeb1b43ffe4ac2cb49c7b1142c58b711bc9a9f91c12dedc8b5b7279a7cfa90edcb6f25d380cdb17ecbe452a7915903cc4cbd89e4e2bf61a80
 
 ENV RAILS_ENV production
