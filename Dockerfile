@@ -5,8 +5,6 @@ FROM $IMAGE
 RUN apk update \
     && apk add build-base git postgresql-dev postgresql-client yarn tzdata
 
-ENV SECRET_KEY_BASE e622e65737f224deeb1b43ffe4ac2cb49c7b1142c58b711bc9a9f91c12dedc8b5b7279a7cfa90edcb6f25d380cdb17ecbe452a7915903cc4cbd89e4e2bf61a80
-
 WORKDIR /opt/overwatch
 
 COPY Gemfile Gemfile.lock ./
@@ -20,8 +18,6 @@ RUN yarn install --check-files
 COPY . ./
 
 ENV RAILS_ENV production
-RUN bin/webpack
-RUN RAILS_ENV=production bundle exec rails webpacker:install 
 RUN RAILS_ENV=production bundle exec rake assets:precompile
 
 EXPOSE 3000
