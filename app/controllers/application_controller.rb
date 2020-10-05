@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   protect_from_forgery prepend: true
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_raven_context
 
   respond_to :html, :json
 
@@ -38,5 +39,12 @@ class ApplicationController < ActionController::Base
     rescue JWT::DecodeError => e
       render json: { errors: e.message }, status: :unauthorized
     end
+  end
+
+  private
+
+  def set_raven_context
+    Raven.user_context(id: session[:current_user_id])
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 end
