@@ -20,12 +20,13 @@ ENV SECRET_KEY_BASE e622e65737f224deeb1b43ffe4ac2cb49c7b1142c58b711bc9a9f91c12de
 ENV RAILS_ENV production
 ENV NODE_ENV production
 RUN yarn install --check-files
+RUN RAILS_ENV=production bundle exec rails webpacker:install
+
 RUN bin/webpack-dev-server
 
 
 
 RUN RAILS_ENV=production bundle exec rake assets:precompile
-RUN RAILS_ENV=production bundle exec rails webpacker:install
 
 EXPOSE 3000
 
