@@ -21,13 +21,14 @@ class ScheduleSpreadsheet < ApplicationRecord
       end
       ScheduleProjectJob.perform_now(project, project_health, project_timeline, workload, pending_raid, milestone_status, notes, week)
     end
-    @resource_worksheet ||= @resource_spreedsheet.worksheets.second
-      @resources = (@resource_worksheet.rows - [@resource_worksheet.rows.first] - [@resource_worksheet.rows.second])
-      @resources.each do |i|
-        project = i[0]
-        no_of_resources = i[1]
-        week = @week
-        ScheduleResourceJob.perform_now(project, no_of_resources, week)
-      end
+
+    @resource_worksheet ||= @spreedsheet.worksheets.second
+    @resources = (@resource_worksheet.rows - [@resource_worksheet.rows.first] - [@resource_worksheet.rows.second])
+    @resources.each do |i|
+      project = i[0]
+      no_of_resources = i[1]
+      week = @week
+      ScheduleResourceJob.perform_now(project, no_of_resources, week)
+    end
   end
 end
