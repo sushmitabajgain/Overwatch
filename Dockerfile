@@ -20,11 +20,10 @@ RUN yarn install --check-files
 COPY . ./
 
 #ENV RAILS_ENV production
-
-RUN RAILS_ENV=production bundle exec rake assets:precompile
 RUN bin/webpack
+RUN bundle exec rake assets:precompile
 RUN bundle exec rails webpacker:install 
-RUN RAILS_ENV=production bundle exec rake webpacker:compile
+RUN bundle exec rake webpacker:compile
 
 
 EXPOSE 3000
