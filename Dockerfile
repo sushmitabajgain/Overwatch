@@ -13,14 +13,17 @@ RUN gem install bundler
 
 RUN bundle install
 
-RUN yarn install --check-files
+#RUN yarn install --check-files
 
 COPY . ./
 ENV SECRET_KEY_BASE e622e65737f224deeb1b43ffe4ac2cb49c7b1142c58b711bc9a9f91c12dedc8b5b7279a7cfa90edcb6f25d380cdb17ecbe452a7915903cc4cbd89e4e2bf61a80
-RUN bin/webpack
-
 ENV RAILS_ENV production
 ENV NODE_ENV production
+RUN bin/webpack-dev-server
+RUN yarn install --check-files
+
+
+
 RUN RAILS_ENV=production bundle exec rake assets:precompile
 RUN RAILS_ENV=production bundle exec rails webpacker:install
 
