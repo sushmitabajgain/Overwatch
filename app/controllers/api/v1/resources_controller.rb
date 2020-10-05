@@ -20,7 +20,7 @@ module Api
       end
 
       def resource_params
-        params.permit(:mutiple, :name, :week_id)
+        params.permit(:project, :no_of_resources, :week)
       end
     end
   end

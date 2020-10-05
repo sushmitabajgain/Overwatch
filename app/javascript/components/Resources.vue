@@ -2,7 +2,7 @@
 <div>
 	<navbar />
   <v-container>
-    <NumberOfResources />
+    <!-- <NumberOfResources /> -->
     <ProjectVsName />
   </v-container>
 </div>
@@ -11,12 +11,12 @@
 
 <script>
   import navbar from './navbar'
-  import NumberOfResources from './NumberOfResources'
+  // import NumberOfResources from './NumberOfResources'
   import ProjectVsName from './ProjectVsName'
   export default {
     components:{
       navbar,
-      NumberOfResources,
+      // NumberOfResources,
       ProjectVsName
     },
   }

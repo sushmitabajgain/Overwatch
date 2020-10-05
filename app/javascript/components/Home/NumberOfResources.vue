@@ -20,7 +20,7 @@
 
 
 <script>
-  import eventService from '../eventService'
+  import eventService from '../../eventService'
   export default {
     data() {
       return{
@@ -77,8 +77,9 @@
       getWeekly(week){
         this.data = [],
         this.chartOptions.labels = []
-        eventService.project.getWeeklyProject(week) 
+        eventService.project.getWeeklyResource(week) 
         .then(res => {
+          console.log(res.data)
           if(res.status == 200){
             var count =0;
             var index;
