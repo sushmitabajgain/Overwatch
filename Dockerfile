@@ -20,7 +20,7 @@ ENV SECRET_KEY_BASE e622e65737f224deeb1b43ffe4ac2cb49c7b1142c58b711bc9a9f91c12de
 ENV RAILS_ENV production
 ENV NODE_ENV production
 RUN yarn install --check-files
-RUN bin/webpack
+RUN bin/webpack-dev-server
 
 
 
