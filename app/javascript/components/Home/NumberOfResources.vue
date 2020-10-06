@@ -62,7 +62,7 @@
           yaxis: [
             {
               title: {
-                text: "Resources",
+                text: "Projects",
                 style: {
                   fontSize: '16px',
                   color: '#37474F'

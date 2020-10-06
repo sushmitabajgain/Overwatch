@@ -28,6 +28,9 @@ class ScheduleSpreadsheet < ApplicationRecord
       project = i[0]
       no_of_resources = i[1]
       week = @week
+      if i[0] == "Total"
+        break
+      end
       ScheduleResourceJob.perform_now(project, no_of_resources, week)
     end
   end
