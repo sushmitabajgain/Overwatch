@@ -1,21 +1,23 @@
 <template>
-  <v-card class="ma-3" color="orange lighten-5" justify="center">
-    <v-row justify="center">
-      <v-card-title justify="center">Pending Raid</v-card-title>
-    </v-row>
-    <v-input style="display:none"> {{currentWeek}}</v-input>
-    <div class="text-center" style="height: 150px;">
-      <v-progress-circular
-        :rotate="360"
-        :size="100"
-        :width="20"
-        :value="value"
-        color="orange "
-      >
-        {{ value }}
-      </v-progress-circular>
-    </div>
-  </v-card>
+  <router-link style="text-decoration: none; color: inherit;" to="/PendingRaidProject">
+    <v-card class="ma-3" color="orange lighten-5" justify="center">
+      <v-row justify="center">
+        <v-card-title justify="center">Pending Raid</v-card-title>
+      </v-row>
+      <v-input style="display:none"> {{currentWeek}}</v-input>
+        <div class="text-center" style="height: 150px;">
+          <v-progress-circular
+            :rotate="360"
+            :size="100"
+            :width="20"
+            :value="value"
+            color="orange "
+          >
+            {{ value }}
+          </v-progress-circular>
+        </div>
+    </v-card>
+  </router-link>
 </template>
 <script>
 import eventService from '../../eventService'
