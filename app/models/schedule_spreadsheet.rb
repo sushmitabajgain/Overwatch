@@ -5,7 +5,6 @@ class ScheduleSpreadsheet < ApplicationRecord
     @worksheet ||= @spreedsheet.worksheets.first
     @projects = (@worksheet.rows - [@worksheet.rows.first] - [@worksheet.rows.second])
     @week = Week.create(week: Time.now)
-    x = 1
     @projects.each do |i|
       project = i[0]
       project_health = i[1]
@@ -15,8 +14,7 @@ class ScheduleSpreadsheet < ApplicationRecord
       milestone_status = i[5]
       notes = i[6]
       week = @week
-      x += 1
-      if x == 14
+      if i[0] == "--break--"
         break
       end
       ScheduleProjectJob.perform_now(project, project_health, project_timeline, workload, pending_raid, milestone_status, notes, week)

@@ -57,20 +57,24 @@
         })
       },
       getColorHealth (project_health) {
-        if (project_health == 'Good' ) return '#FFEA00'
+        if (project_health == 'Good' ) return '#ffdf00'
         else if (project_health == 'Needs Checkup') return '#d50000'
-        else return 'blue'
+        else if (project_health == 'Bad') return '#d50000'
+        else return ''
       },
       getColorTimeline (project_timeline) {
         if (project_timeline == 'On track' ) return '#76EE00'
         else if (project_timeline == 'Due') return '#d50000'
-        else return '#FFEA00'
+        else if (project_timeline == 'Ahead Schedule') return '#FFEA00'
+        else if (project_timeline == 'On Halt') return 'blue'
+        else return ''
       },
       getColorWorkload (workload) {
         if (workload == 'Normal' ) return '#29B6F6'
         else if (workload == 'Relaxed') return '#D500F9'
-        else if(workload == 'Overload') return '#FFEA00'
-        else return '#d50000'
+        else if(workload == 'Overload') return '#d50000'
+        else if (workload == 'Stretched') return 'orange'
+        else return ''
       }
     },
     computed: {
