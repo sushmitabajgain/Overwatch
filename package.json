@@ -2,12 +2,17 @@
   "name": "overwatch",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^5.2.1",
     "apexcharts": "^3.20.0",
     "axios": "^0.20.0",
+    "material-design-icons-iconfont": "^6.0.1",
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
     "turbolinks": "^5.2.0",
     "v-toaster": "^1.0.3",
     "vue": "^2.6.12",
@@ -18,12 +23,7 @@
     "vue-template-compiler": "^2.6.12",
     "vuejs-dialog": "^1.4.2",
     "vuetify": "^2.3.9",
-    "vuex": "^3.5.1",
-    "material-design-icons-iconfont": "^6.0.1",
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "node-sass": "^4.14.1",
-    "sass": "^1.26.10",
-    "sass-loader": "^9.0.3"
+    "vuex": "^3.5.1"
   },
   "version": "0.1.0",
   "devDependencies": {
