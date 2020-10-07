@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :weeks do
         resources :projects
         resources :resources
+        resources :milestones
       end
       get 'projects', :to => 'projects#projects'
       get 'resources', :to => 'resources#resources'
