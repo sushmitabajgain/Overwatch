@@ -17,7 +17,7 @@ module Api
       # def worksheet
       #   @session = GoogleDrive::Session.from_config('google_credentials.json')
       #   @spreedsheet ||= @session.spreadsheet_by_title("Eagle Eye")
-      #   @worksheet ||= @spreedsheet.worksheets.first
+      #   @worksheet ||= @spreedsheet.worksheets.second
       #   @projects = @worksheet.rows
       #   # x = 1
       #   @projects.each do |i|

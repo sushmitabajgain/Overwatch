@@ -11,13 +11,13 @@
           <Table />
         </v-col>
         <v-col cols="6">
-          <!-- <Test /> -->
+          <NumberOfResources />
+        </v-col>
+        <v-col cols="6">
+          <Milestone />
         </v-col>
         <v-col cols="6">
           <!-- <ProjectVsName /> -->
-        </v-col>
-        <v-col cols="8">
-          <!-- <Milestone /> -->
         </v-col>
       </v-row>
   </v-container>
@@ -25,7 +25,6 @@
 <script>
   import ProjectStatus from '../ProjectStatus'
   import Milestone from '../Milestone'
-  import NumberOfResources from '../NumberOfResources'
   import ProjectVsName from '../ProjectVsName'
   import Benched from '../Home/Benched'
   import TotalProject from '../Home/TotalProject'
@@ -35,6 +34,8 @@
   import Workload from '../Project/Workload'
   import Test from '../Project/Test'
   import Table from '../Project/Table'
+  import NumberOfResources from '../Home/NumberOfResources'
+
   export default {
     components:{
       ProjectStatus,
@@ -48,7 +49,8 @@
       ProjectHealth,
       Workload,
       Test,
-      Table
+      Table,
+      NumberOfResources
     },
   }
 </script>

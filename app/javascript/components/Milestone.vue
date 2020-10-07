@@ -13,7 +13,7 @@
           ></v-progress-linear>
     </div>
     <div v-else>
-      <apexchart type="bar" height="400" :options="chartOptions" :series="series"></apexchart>
+      <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
     </div>
   </v-card>
 </template>
@@ -37,7 +37,7 @@ export default {
       this.no_of_milestone = [],
       this.completed_milestone = [],
       this.projects = [],
-      eventService.project.getWeeklyProject(week) 
+      eventService.project.getWeeklyMilestone(week) 
       .then(res => {
         if(res.status == 200){
         var count =0;
@@ -45,15 +45,15 @@ export default {
         for(index in res.data)
           if(res.data.length>0){
             if (res.data[index].no_of_milestone !== ""){
-              this.no_of_milestone.push(res.data[index].no_of_milestone);
+              this.no_of_milestone.push(res.data[index].no_of_milestones);
             }
             if (res.data[index].missed_milestone !== ""){
-              this.missed_milestone.push(res.data[index].missed_milestone);
+              this.missed_milestone.push(res.data[index].missed_milestones);
             }
             if (res.data[index].completed_milestone !== ""){
-              this.completed_milestone.push(res.data[index].completed_milestone);
+              this.completed_milestone.push(res.data[index].completed_milestones);
             }
-            if ((res.data[index].completed_milestone !== "") ||(res.data[index].no_of_milestone !== "") || (res.data[index].missed_milestone !== "")){
+            if ((res.data[index].completed_milestones !== "") ||(res.data[index].no_of_milestones !== "") || (res.data[index].missed_milestones !== "")){
               this.projects.push(res.data[index].project);
             }
           }

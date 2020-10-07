@@ -8,6 +8,7 @@ import ChangePassword from './components/ChangePassword'
 import HomePage from './components/HomePage'
 import Resources from './components/Resources'
 import Project from './components/Project'
+import PendingRaidProject from './components/Home/PendingRaidProject'
 
 Vue.use(VueRouter)
 
@@ -66,6 +67,11 @@ export default new VueRouter({
       path: '/Project/:id',
       name: 'Project',
       component: Project
+    },
+    {
+      path: '/PendingRaidProject',
+      name: 'PendingRaidProject',
+      component: PendingRaidProject
     },
   ]
 })

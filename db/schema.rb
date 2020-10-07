@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_103731) do
+ActiveRecord::Schema.define(version: 2020_10_07_023724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "milestones", force: :cascade do |t|
+    t.string "project"
+    t.integer "no_of_milestones"
+    t.integer "missed_milestones"
+    t.integer "completed_milestones"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "week_id"
+    t.index ["week_id"], name: "index_milestones_on_week_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "project"
@@ -72,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_103731) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "milestones", "weeks"
   add_foreign_key "projects", "weeks"
   add_foreign_key "resources", "weeks"
   add_foreign_key "users", "roles"

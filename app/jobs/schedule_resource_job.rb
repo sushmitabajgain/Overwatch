@@ -1,7 +1,7 @@
 class ScheduleResourceJob < ApplicationJob
   @queue = :resource
 
-  def perform(multiple, name, week)
-    Resource.create(multiple: multiple, name: name, week_id: week)
+  def perform(project, no_of_resources, week)
+    Resource.create(project: project, no_of_resources: no_of_resources, week: week)
   end
 end

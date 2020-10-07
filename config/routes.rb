@@ -6,9 +6,11 @@ Rails.application.routes.draw do
       resources :weeks do
         resources :projects
         resources :resources
+        resources :milestones
       end
       get 'projects', :to => 'projects#projects'
       get 'resources', :to => 'resources#resources'
+      get 'milestones', :to => 'milestones#milestones'
       get 'search', :to=> 'search#index'
       get 'worksheet', :to=> 'projects#worksheet'
     end
