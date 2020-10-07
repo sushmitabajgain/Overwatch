@@ -1,6 +1,6 @@
 module Api
   module V1
-    class MilestoneController < ApplicationController
+    class MilestonesController < ApplicationController
       skip_before_action :verify_authenticity_token
       before_action :get_week, only: :index
 
@@ -13,6 +13,7 @@ module Api
         @milestones = Milestone.all
         render json: @milestones, status: :ok
       end
+      
       private
 
       def get_week

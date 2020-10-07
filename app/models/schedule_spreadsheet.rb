@@ -32,9 +32,9 @@ class ScheduleSpreadsheet < ApplicationRecord
       ScheduleResourceJob.perform_now(project, no_of_resources, week)
     end
 
-    @resource_worksheet ||= @spreedsheet.worksheets.third
-    @resources = (@resource_worksheet.rows - [@resource_worksheet.rows.first] - [@resource_worksheet.rows.second])
-    @resources.each do |i|
+    @milestone_worksheet ||= @spreedsheet.worksheets.third
+    @milestones = (@milestone_worksheet.rows - [@milestone_worksheet.rows.first] - [@milestone_worksheet.rows.second])
+    @milestones.each do |i|
       project = i[0]
       no_of_milestones = i[1]
       missed_milestones = i[2]

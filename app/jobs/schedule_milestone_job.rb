@@ -1,7 +1,7 @@
 class ScheduleMilestoneJob < ApplicationJob
-  queue_as :default
+  @queue = :milestone
 
-  def perform(*args)
-    # Do something later
+  def perform(project, no_of_milestones, missed_milestones, completed_milestones, week)
+    Milestone.create(project: project, no_of_milestones: no_of_milestones, missed_milestones: missed_milestones, completed_milestones: completed_milestones, week: week)
   end
 end

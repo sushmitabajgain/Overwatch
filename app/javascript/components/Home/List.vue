@@ -14,10 +14,10 @@
           <NumberOfResources />
         </v-col>
         <v-col cols="6">
-          <!-- <ProjectVsName /> -->
+          <Milestone />
         </v-col>
-        <v-col cols="8">
-          <!-- <Milestone /> -->
+        <v-col cols="6">
+          <!-- <ProjectVsName /> -->
         </v-col>
       </v-row>
   </v-container>

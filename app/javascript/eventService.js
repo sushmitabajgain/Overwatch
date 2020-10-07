@@ -82,7 +82,11 @@ export default {
 
     getResource(){
       return apiFeature.get('/resources')
-    }
+    },
+    
+    getWeeklyMilestone(week_id){
+      return apiFeature.get('/weeks/'+week_id+'/milestones')
+    },
   },
 
   weeks:{
