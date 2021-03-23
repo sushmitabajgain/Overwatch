@@ -9,12 +9,12 @@ build:
   only: 
     - master
   script:
-    - docker build -t docker.gurzu.net/gurzu/overwatch:latest .
+    - docker build -t overwatch:latest .
 
 push:
   stage: push
   only:
     - master
   script:
-    - docker push docker.gurzu.net/gurzu/overwatch:latest
+    - docker push docker overwatch:latest
 

@@ -1,6 +1,9 @@
 {
   "name": "overwatch",
   "private": true,
+  "scripts": {
+    "start": "webpack-dev-server -d --config webpack.dev.config.js --content-base public/ --progress --colors"
+   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@rails/actioncable": "^6.0.0",
@@ -28,7 +31,6 @@
   "version": "0.1.0",
   "devDependencies": {
     "deepmerge": "^4.2.2",
-    "fibers": "^5.0.0",
     "webpack-dev-server": "^3.11.0"
   }
 }

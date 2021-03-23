@@ -1,20 +1,8 @@
-default: &default
+development:
   adapter: postgresql
   encoding: unicode
+  database: blog_development
   pool: 5
-
-development:
-  <<: *default
-  url: <%= ENV['POSTGRES_URL_DEVELOPMENT']%>
-
-staging:
-  <<: *default
-  url: <%= ENV['POSTGRES_URL_STAGING']%>
-
-test:
-  <<: *default
-  url: <%= ENV['POSTGRES_URL_TEST']%>
-
-production:
-  <<: *default
-  url: <%= ENV['POSTGRES_URL_PRODUCTION']%>
+  username: postgres
+  password:
+  host: localhost

@@ -14,26 +14,13 @@ module Api
         render json: projects, status: :ok
       end
 
-      # def worksheet
-      #   @session = GoogleDrive::Session.from_config('google_credentials.json')
-      #   @spreedsheet ||= @session.spreadsheet_by_title("Eagle Eye")
-      #   @worksheet ||= @spreedsheet.worksheets.second
-      #   @projects = @worksheet.rows
-      #   # x = 1
-      #   @projects.each do |i|
-      #       p i
-      #   #     # project = i[0]
-      #   #     # project_health = i[1]
-      #   #     # project_timeline = i[2]
-      #   #     # workload = i[3]
-      #   #     # pending_raid = i[4]
-      #   #     # milestone_status = i[5]
-      #   #     # notes = i[6]
-      #   #     # x += 1
-      #   end
-      #   # @pro = @listing.rows
-      #   render json: @projects, status: :ok
-      # end
+      def worksheet
+        @session = GoogleDrive::Session.from_config('google_credentials.json')
+        @spreedsheet ||= @session.spreadsheet_by_title("Eagle Eye")
+        @worksheet ||= @spreedsheet.worksheets.first
+        @projects = (@worksheet.rows - [@worksheet.rows.first] - [@worksheet.rows.second])
+        render json: @projects, status: :ok
+      end
 
       private
 

@@ -87,6 +87,10 @@ export default {
     getWeeklyMilestone(week_id){
       return apiFeature.get('/weeks/'+week_id+'/milestones')
     },
+
+    getWorksheet(){
+      return apiFeature.get('/worksheet')
+    }
   },
 
   weeks:{

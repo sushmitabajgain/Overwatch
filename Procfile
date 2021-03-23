@@ -1,2 +1,2 @@
-backend: bundle exec puma -C config/puma.rb
+backend: rails s -p 3000
 frontend: bin/webpack-dev-server

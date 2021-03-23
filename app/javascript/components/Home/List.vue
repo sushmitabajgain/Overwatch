@@ -32,7 +32,7 @@
   import PendingRaid from '../Home/PendingRaid'
   import ProjectHealth from '../Project/ProjectHealth'
   import Workload from '../Project/Workload'
-  import Test from '../Project/Test'
+  // import Test from '../Project/Test'
   import Table from '../Project/Table'
   import NumberOfResources from '../Home/NumberOfResources'
 
@@ -48,7 +48,7 @@
       PendingRaid,
       ProjectHealth,
       Workload,
-      Test,
+      // Test,
       Table,
       NumberOfResources
     },

@@ -24,13 +24,15 @@ RUN bundle install
 
 COPY . ./
 
+ENV RAILS_ENV=production
+
 RUN yarn install --check-files
 
 RUN RAILS_ENV=production NODE_ENV=production bundle exec rails assets:precompile
 
-RUN bin/webpack
-
 RUN yarn install --check-files
+
+RUN RAILS_ENV=production RACK_ENV=production NODE_ENV=production bin/webpack
 
 RUN RAILS_ENV=production bundle exec rake webpacker:compile
 
