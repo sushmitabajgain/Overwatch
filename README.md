@@ -15,7 +15,7 @@
 
 ## Developing
 ```shell
-git clone git@git.gurzu.net:gurzu/Overwatch.git
+git clone https://github.com/sushmitabajgain/Overwatch.git
 cd Overwatch
 bundle install
 yarn install
@@ -36,5 +36,5 @@ Necessary components are defined in `app/javascript/components/`.
 
 ## Copyright
 
-All rights reserved to Gurzu. Inc.
+All rights reserved to Sushmita.
 # Overwatch
